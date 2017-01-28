@@ -8,20 +8,18 @@
         </a>
     </div>
     <!-- Filter Content -->
-    <div data-ng-if="oeeDashboardObj.filter.show">
+    <div class="row" data-ng-if="oeeDashboardObj.filter.showContent" style="margin-top: 20px;">
         <div class="col s3 m3 l3">
             <px-dropdown display-value="Select" checkbox-mode="true"><px-dropdown-content checkbox-mode='true' extend-dropdown='true' extend-dropdown-by='25' max-cont-character-width='10' items='[{"key":"1","val":"iPhone"},{"key":"2","val":"Android"},{"key":"3","val":"Blackberry"},{"key":"4","val":"Windows Phone"},{"key":"5","val":"Flip Phone","disabled":true}]'></px-dropdown-content></px-dropdown>
         </div>
         <div class="col s3 m3 l3">
-            <px-dropdown display-value="Select" checkbox-mode="true"><px-dropdown-content checkbox-mode='true' extend-dropdown='true' extend-dropdown-by='25' max-cont-character-width='10' items='[{"key":"1","val":"iPhone"},{"key":"2","val":"Android"},{"key":"3","val":"Blackberry"},{"key":"4","val":"Windows Phone"},{"key":"5","val":"Flip Phone","disabled":true}]'></px-dropdown-content></px-dropdown>
         </div>
         <div class="col s3 m3 l3">
-            <px-dropdown display-value="Select" checkbox-mode="true"><px-dropdown-content checkbox-mode='true' extend-dropdown='true' extend-dropdown-by='25' max-cont-character-width='10' items='[{"key":"1","val":"iPhone"},{"key":"2","val":"Android"},{"key":"3","val":"Blackberry"},{"key":"4","val":"Windows Phone"},{"key":"5","val":"Flip Phone","disabled":true}]'></px-dropdown-content></px-dropdown>
+           <button class="btn btn--primary" type="button">Apply</button>
         </div>
         <div class="col s3 m3 l3">
-            <px-dropdown display-value="Select" checkbox-mode="true"><px-dropdown-content checkbox-mode='true' extend-dropdown='true' extend-dropdown-by='25' max-cont-character-width='10' items='[{"key":"1","val":"iPhone"},{"key":"2","val":"Android"},{"key":"3","val":"Blackberry"},{"key":"4","val":"Windows Phone"},{"key":"5","val":"Flip Phone","disabled":true}]'></px-dropdown-content></px-dropdown>
+            <button class="btn btn--default" type="button">Reset</button>
         </div>
-
     </div>
     <!-- / Filter Content -->
 </div>
@@ -34,11 +32,10 @@
 
     <!-- Info Card -->
     <div class="card col s5 m3 l3 graph-info-card " data-ng-if="oeeDashboardObj.infoCard.show">
-        <div>
-            <span class="grey-text text-darken-4">Card Title
-                <i class="fa fa-times-circle right" aria-hidden="true" style="cursor: pointer;" data-ng-click="closeInfoCard()"></i>
-            </span>
-        </div>
+        <span class="grey-text text-darken-4">
+            <i class="fa fa-times-circle right" aria-hidden="true" style="cursor: pointer;" data-ng-click="closeInfoCard()"></i>
+        </span>
+        <p>This map is used to identify OEE Constraints at a glance at the shop level.</p>
        <div class="card-content">
             <p>Card Content</p>
         </div>

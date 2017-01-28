@@ -12,7 +12,8 @@ define(['angular', '../app-module'], function (angular) {
                 show: false,
                 style: {
                     height:'5px'
-                }
+                },
+                showContent: false
             },
             infoCard: {
                 show: true
@@ -30,13 +31,19 @@ define(['angular', '../app-module'], function (angular) {
              $scope.oeeDashboardObj.filter.show = !$scope.oeeDashboardObj.filter.show;
              if( $scope.oeeDashboardObj.filter.show) {
                   $scope.oeeDashboardObj.filter.style = {
-                      height: '150px'
-                  }
+                      height: '73px'
+                  };
+                  $timeout(function (){
+                      $scope.oeeDashboardObj.filter.showContent = true;
+                  }, 500);
              } else {
                 $scope.oeeDashboardObj.filter.style = {
                       height: '5px'
                 }
-             } 
+                $timeout(function (){
+                      $scope.oeeDashboardObj.filter.showContent = false;
+                }, 200);
+            } 
          }
 
          $scope.closeInfoCard = function () {

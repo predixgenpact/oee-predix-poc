@@ -32,6 +32,7 @@ main { background-color: #fff !important; margin: 45px 0px 0px 0px!important;}
    bottom:0;
    width:100%;
    height:40px;   /* Height of the footer */
+   background-color: #fff !important;
 }
 
 .page-content {
@@ -87,6 +88,9 @@ main { background-color: #fff !important; margin: 45px 0px 0px 0px!important;}
     text-align: center;
 }
 
+.filter-icon>a , .filter-icon>a:hover{
+    color: #000 !important;
+}
 .filter {
     position: fixed;
     top: 45;
@@ -119,9 +123,12 @@ main { background-color: #fff !important; margin: 45px 0px 0px 0px!important;}
     height: auto;
     z-index: 15;
 }
-.graph-info-card>div {
-    padding: 10px;
+.graph-info-card>span {
+    position: absolute;
+    right: 5px;
+    top: 5px;
 }
+
 
 .page-loading {
     position: absolute;
@@ -133,4 +140,26 @@ main { background-color: #fff !important; margin: 45px 0px 0px 0px!important;}
 .hidden {
     display: none !important;
     visibility: hidden !important;
+}
+
+.btn--primary {
+    color: #fff !important;
+    background-color: #337ab7 !important;
+    border-color: #2e6da4 !important;
+}
+.btn--primary:hover {
+    color: #fff !important;
+    background-color: #286090 !important;
+    border-color: #204d74 !important;
+}
+
+.btn--default:hover {
+    color: #333 !important;
+    background-color: #e6e6e6 !important;
+    border-color: #adadad !important;
+}
+.btn--default {
+    color: #333 !important;
+    background-color: #fff !important;
+    border-color: #ccc !important;
 }
