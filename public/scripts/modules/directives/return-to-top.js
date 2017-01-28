@@ -1,4 +1,4 @@
-define(['angular', 'app-module'], function(angular) {
+define(['angular', '../app-module'], function(angular) {
     'use strict';
 
     angular.module('app.module')

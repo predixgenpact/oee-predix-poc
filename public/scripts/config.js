@@ -68,8 +68,7 @@ require.config({
         lodash: '../bower_components/lodash/dist/lodash.min',
         jquery: '../bower_components/jquery/dist/jquery.min',
         highcharts: '../bower_components/highcharts/highcharts',
-        'materialize': '../bower_components/materialize/dist/js/materialize.min',
-        'app-module': '../scripts/modules/app-module'
+        'materialize': '../bower_components/materialize/dist/js/materialize.min'
     },
     priority: [
         'jquery',

@@ -30,7 +30,7 @@
 
 <body unresolved data-ng-controller="MainCtrl">
     <header class="fixed-header">
-            <ul class="header-color" style="color: #fff;">
+            <ul>
                 <li>
                     <span href="#home" style="padding: 0px;">
                         <svg class="u-mr--" style="margin-top: 5px;" xmlns="http://www.w3.org/2000/svg" x="0" y="0" width="35" height="35"
@@ -44,13 +44,18 @@
                 <li class="right hide-on-med-and-down"><span style="font-size: 16px; padding:12px 10px;">Powered by Predix</span></li>
             </ul>
     </header>
-
-    <main>
+    <div class="page-content">
+        <!-- Show Page Loading Spinner-->
+        <px-spinner size="70" class="page-loading"></px-spinner>
         <div ui-view></div>
-    </main>
+    </div>
+    <footer class="page-footer">
+
+    </footer>
     <!-- Page return to top-->
     <span return-to-top></span>
     <google-analytics code="UA-72329845-1"></google-analytics>
+    <!-- Google Maps -->
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false&language=en"></script>
 </body>
 <script>
