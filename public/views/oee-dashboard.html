@@ -21,7 +21,7 @@
               </px-dropdown>
         </div>
         <div class="col s4 m3 l3">
-            <button id="Applybtn" class="btn btn--primary" type="button" data-ng-disabled="oeeDashboardObj.disableResetFilterBtn" data-ng-click="applyFilter()">Apply</button>
+            <button id="Applybtn" class="btn btn--primary" type="button" data-ng-disabled="oeeDashboardObj.disableResetFilterBtn" data-ng-click="applyFilter();">Apply</button>
             <button id="Resetbtn" class="btn btn--default" type="button" data-ng-disabled="oeeDashboardObj.disableResetFilterBtn" data-ng-click="resetFilter()">Reset</button>
         </div>
     </div>
@@ -45,13 +45,28 @@
 <div class="row" style="margin-bottom:0px; ">
 
     <!-- Info Card -->
-    <div class="card col s5 m3 l3 graph-info-card " data-ng-if="oeeDashboardObj.infoCard.show">
+    <div class="card col s5 m3 l2 graph-info-card " data-ng-if="oeeDashboardObj.infoCard.show">
         <span class="grey-text text-darken-4">
             <i class="fa fa-times-circle right" aria-hidden="true" style="cursor: pointer;" data-ng-click="closeInfoCard()"></i>
         </span>
-        <p class="grey-text">This map is used to identify OEE Constraints at a glance at the shop level.</p>
-       <div class="card-content">
-            <p>Card Content</p>
+        <p class="grey-text" style="font-size:0.8rem;color:#7c7c84 !important">This map is used to identify OEE Constraints at a glance at the shop level.</p>
+       <div class="card-content" style="padding:0px !important;font-size: 0.8rem">
+    <table style="margin-left: 10%">
+        <tbody>
+          <tr id="Acceptable">
+            <td style="padding:0px !important;width: 25px !important"><img src="../images/AcceptableOEE.png"></td>
+            <td style="padding:0px !important">Acceptable OEE</td>
+          </tr>
+          <tr id="Risk">
+            <td style="padding:0px !important;width: 25px !important;width: 25px !important"><img src="../images/AtRisk.png"></td>
+            <td style="padding:0px !important">At Risk</td>
+          </tr>
+          <tr id="Constrained">
+            <td style="padding:0px !important;width: 25px !important"><img src="../images/Constrained.png"></td>
+            <td style="padding:0px !important">Constrained</td>
+          </tr>
+        </tbody>
+      </table>
         </div>
     </div>
     <!-- / Info Card -->
