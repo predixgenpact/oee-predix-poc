@@ -96,6 +96,7 @@ define(['angular',  '../app-module', '../services/oee-supply-chain-service'], fu
 
         // Json call
         $scope.applyFilter = function () {
+            document.getElementById("Applybtn").disabled = true;
               $scope.coordstoplot=$scope.coords;
             if($scope.temp.length!=0){
                 $scope.coordstoplotafterfilter=[];
@@ -109,6 +110,28 @@ define(['angular',  '../app-module', '../services/oee-supply-chain-service'], fu
                 }
                 })
                 $scope.coordstoplot=$scope.coordstoplotafterfilter;
+                angular.forEach($scope.temp,function(value,key){
+                    if($scope.temp[0].checked==false){
+                        document.getElementById("Acceptable").style.display = "none";
+
+                    }
+                    else{
+                        document.getElementById("Acceptable").style.display = "block";   
+                    }
+                    if($scope.temp[1].checked==false){
+                        document.getElementById("Risk").style.display = "none";
+                    }
+                    else{
+                        document.getElementById("Risk").style.display = "block";   
+                    }
+                    if($scope.temp[2].checked==false){
+                        document.getElementById("Constrained").style.display = "none";
+                    }
+                    else{
+                        document.getElementById("Constrained").style.display = "block";   
+                    }
+
+                })
             }
             if($scope.temp1.length!=0){
                 $scope.coordstoplotafterfilter=[];
@@ -136,17 +159,17 @@ define(['angular',  '../app-module', '../services/oee-supply-chain-service'], fu
                 })
                 $scope.coordstoplot=$scope.coordstoplotafterfilter;
             }
-            console.log($scope.coordstoplotafterfilter);
             $scope.func($scope.coordstoplotafterfilter);
+            $scope.toogleFilter();
         }
 
         // reset all filter selection
-        $scope.resetFilter = function () {
-            $scope.oeeDashboardObj.disableResetFilterBtn = false;
+        $scope.resetFilter = function () {  
             document.getElementById("Applybtn").disabled = true;
-           // document.getElementById("Resetbtn").disabled = true;
-            $("#Applybtn").removeClass("mdl-button--colored");
-            $("#Resetbtn").removeClass("mdl-button--colored");
+        document.getElementById("Resetbtn").disabled = true;
+        document.getElementById("Acceptable").style.display = "block";  
+        document.getElementById("Risk").style.display = "block";  
+        document.getElementById("Constrained").style.display = "block";        
 
             if($scope.temp.length!=0){
             for(var i=0;i<$scope.temp.length;i++){
@@ -155,7 +178,6 @@ define(['angular',  '../app-module', '../services/oee-supply-chain-service'], fu
                 document.getElementById('test').items[i].checked=true;
                 }
             }
-            debugger
             }
             if($scope.temp1.length!=0){
             for(var i=0;i<$scope.temp1.length;i++){
@@ -172,6 +194,7 @@ define(['angular',  '../app-module', '../services/oee-supply-chain-service'], fu
             }
             }
             $scope.func($scope.coords);
+            $scope.toogleFilter();
         }
 
 
@@ -251,7 +274,7 @@ define(['angular',  '../app-module', '../services/oee-supply-chain-service'], fu
                     sessionStorage.setItem("SelectedSiteNo",marker.SiteNo);
                         /*$scope.locomotiveID=sessionStorage.getItem("SelectedLoco");*/
                     marker.setAnimation(google.maps.Animation.BOUNCE);
-                    window.location.href = "/valueStreams";
+                    /*window.location.href = "/valueStreams";*/
                     }
                 });
                 //To Set the bounds dynamically
