@@ -235,3 +235,7 @@ border: 1px solid #ddd;}
     opacity: 1 !important;
     position: relative !important;
 }
+
+.px-dropdown-content-0 .px-dropdown--content.px-dropdown-content {
+    width: 100% !important;
+}

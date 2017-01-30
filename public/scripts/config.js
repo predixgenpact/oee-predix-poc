@@ -101,7 +101,7 @@ require.config({
             deps: ['jquery']
         },
         'app': {
-            deps: ['angular', 'app-module']
+            deps: ['angular', 'app-module', 'main']
         }
 
     }

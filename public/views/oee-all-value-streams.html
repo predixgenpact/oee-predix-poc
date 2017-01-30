@@ -1,28 +1,35 @@
-<div class="row filter" data-ng-style="oeeDashboardObj.filter.style">
-    <div class="filter-icon">
+ <!--Dashboard Filter -->
+<!-- Filter Content -->
+<!--<div class="row filter" data-ng-style="oeeDashboardObj.filter.style">
+    <div data-ng-style="oeeDashboardObj.filterContent.style">
+        <div class="col s4 m3 l3">
+            <px-dropdown display-value="Select" checkbox-mode="true" value="{{oeeDashboardObj.selectedCountries}}"><px-dropdown-content data-ng-click="applyFilter()" checkbox-mode='true' extend-dropdown='true' extend-dropdown-by='25' max-cont-character-width='10' items='{{oeeDashboardObj.countriesList}}'></px-dropdown-content></px-dropdown>
+        </div>
+        <div class="col s4 m3 l3">
+             <px-dropdown display-value="Select" checkbox-mode="true"><px-dropdown-content checkbox-mode='true' extend-dropdown='true' extend-dropdown-by='25' max-cont-character-width='10' items='[{"key":"1","val":"iPhone"},{"key":"2","val":"Android"},{"key":"3","val":"Blackberry"},{"key":"4","val":"Windows Phone"},{"key":"5","val":"Flip Phone","disabled":true}]'></px-dropdown-content></px-dropdown>
+        </div>
+        <div class="col s4 m3 l3">
+             <px-dropdown display-value="Select" checkbox-mode="true"><px-dropdown-content checkbox-mode='true' extend-dropdown='true' extend-dropdown-by='25' max-cont-character-width='10' items='[{"key":"1","val":"iPhone"},{"key":"2","val":"Android"},{"key":"3","val":"Blackberry"},{"key":"4","val":"Windows Phone"},{"key":"5","val":"Flip Phone","disabled":true}]'></px-dropdown-content></px-dropdown>
+        </div>
+        <div class="col s4 m3 l3">
+            <button class="btn btn--primary" type="button" ng-disabled="oeeDashboardObj.disableResetFilterBtn">Apply</button>
+            <button class="btn btn--default" type="button" ng-disabled="oeeDashboardObj.disableResetFilterBtn">Reset</button>
+        </div>
+    </div>
+</div>-->
+<!-- / Filter Content -->
+<!-- Filter Icon -->
+<!--<div class="row filter-icon" data-ng-style="oeeDashboardObj.filterIcon.style">
         <a href="javascript:void(0)" data-ng-click="toogleFilter()">
             <i data-ng-if="!oeeDashboardObj.filter.show" class="fa fa-filter" aria-hidden="true"></i>
-            <i data-ng-if="oeeDashboardObj.filter.show" class="fa fa-times-circle" aria-hidden="true"></i>            
+            <i data-ng-if="oeeDashboardObj.filter.show" class="fa fa-times-circle" aria-hidden="true"></i>
+            &nbsp;            
             <span data-ng-bind="oeeDashboardObj.filter.show ? 'Close' : 'Filters'"></span>
         </a>
-    </div>
-    <!-- Filter Content -->
-    <div class="row" data-ng-if="oeeDashboardObj.filter.showContent" style="margin-top: 20px;">
-        <div class="col s3 m3 l3">
-            <px-dropdown display-value="Select" checkbox-mode="true"><px-dropdown-content checkbox-mode='true' extend-dropdown='true' extend-dropdown-by='25' max-cont-character-width='10' items='[{"key":"1","val":"iPhone"},{"key":"2","val":"Android"},{"key":"3","val":"Blackberry"},{"key":"4","val":"Windows Phone"},{"key":"5","val":"Flip Phone","disabled":true}]'></px-dropdown-content></px-dropdown>
-        </div>
-        <div class="col s3 m3 l3">
-            <a ui-sref="valueStreams">Next</a>
-        </div>
-        <div class="col s3 m3 l3">
-           <button class="btn btn--primary" type="button">Apply</button>
-        </div>
-        <div class="col s3 m3 l3">
-            <button class="btn btn--default" type="button">Reset</button>
-        </div>
-    </div>
-    <!-- / Filter Content -->
-</div>
+</div>-->
+<!-- / Filter Icon -->
+<!-- / Dashboard Filter -->
+
 
 <div class="row">
      <table class="highlight" id="valueStreamTable">
