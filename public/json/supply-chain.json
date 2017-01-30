@@ -1,0 +1,625 @@
+[{
+    "SiteCode": "AUB",
+    "SiteNo": 512,
+    "LAT": 32.557498,
+    "LONG": -85.552826,
+    "City": "Auburn",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "AUB",
+    "SiteNo": 477,
+    "LAT": 33.745573,
+    "LONG": -117.867834,
+    "City": "Santa Ana",
+    "Country": "USA",
+    "Status": "Risk"
+}, {
+    "SiteCode": "AUB",
+    "SiteNo": 500,
+    "LAT": 34.57804,
+    "LONG": -117.381209,
+    "City": "Victorville",
+    "Country": "USA",
+    "Status": "Constrained"
+}, {
+    "SiteCode": "AUB",
+    "SiteNo": 485,
+    "LAT": 39.650583,
+    "LONG": -75.736654,
+    "City": "Newark",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "AUB",
+    "SiteNo": 489,
+    "LAT": 27.901372,
+    "LONG": -82.694183,
+    "City": "Clearwater",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "AUB",
+    "SiteNo": 491,
+    "LAT": 30.233315,
+    "LONG": -81.584008,
+    "City": "Jacksonville",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "AUB",
+    "SiteNo": 495,
+    "LAT": 26.213622,
+    "LONG": -80.15973,
+    "City": "Pompano Beach",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "AUB",
+    "SiteNo": 527,
+    "LAT": 25.981086,
+    "LONG": -80.387766,
+    "City": "Miramar",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "AUB",
+    "SiteNo": 496,
+    "LAT": 42.319145,
+    "LONG": -89.041357,
+    "City": "Loves Park",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "AUB",
+    "SiteNo": 457,
+    "LAT": 40.367191,
+    "LONG": -86.823665,
+    "City": "Lafayette",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "AUB",
+    "SiteNo": 478,
+    "LAT": 39.46203,
+    "LONG": -87.415484,
+    "City": "Terre Haute",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "AUB",
+    "SiteNo": 460,
+    "LAT": 37.164518,
+    "LONG": -97.026321,
+    "City": "Arkansas City",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "AUB",
+    "SiteNo": 501,
+    "LAT": 39.016728,
+    "LONG": -84.600777,
+    "City": "Erlanger",
+    "Country": "USA",
+    "Status": "Risk"
+}, {
+    "SiteCode": "AUB",
+    "SiteNo": 504,
+    "LAT": 39.0788,
+    "LONG": -84.66733,
+    "City": "Hebron",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "MAD",
+    "SiteNo": 514,
+    "LAT": 37.354693,
+    "LONG": -87.541316,
+    "City": "Madisonville",
+    "Country": "USA",
+    "Status": "Constrained"
+}, {
+    "SiteCode": "LYN",
+    "SiteNo": 530,
+    "LAT": 42.452114,
+    "LONG": -70.974457,
+    "City": "Lynn",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "LYN",
+    "SiteNo": 484,
+    "LAT": 39.329166,
+    "LONG": -76.433153,
+    "City": "Baltimore",
+    "Country": "USA",
+    "Status": "Risk"
+}, {
+    "SiteCode": "LYN",
+    "SiteNo": 490,
+    "LAT": 42.903575,
+    "LONG": -85.545457,
+    "City": "Grand Rapids",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "LYN",
+    "SiteNo": 503,
+    "LAT": 42.248234,
+    "LONG": -83.452361,
+    "City": "Belleville",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "LYN",
+    "SiteNo": 515,
+    "LAT": 43.141961,
+    "LONG": -86.217877,
+    "City": "Muskegon",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "BAT",
+    "SiteNo": 480,
+    "LAT": 34.309631,
+    "LONG": -89.895776,
+    "City": "Batesville",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "BAT",
+    "SiteNo": 482,
+    "LAT": 31.578176,
+    "LONG": -89.237944,
+    "City": "Ellisville",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "BAT",
+    "SiteNo": 473,
+    "LAT": 45.987955,
+    "LONG": -112.664938,
+    "City": "Butte",
+    "Country": "USA",
+    "Status": "Risk"
+}, {
+    "SiteCode": "BAT",
+    "SiteNo": 456,
+    "LAT": 35.916447,
+    "LONG": -78.834212,
+    "City": "Durham",
+    "Country": "USA",
+    "Status": "Constrained"
+}, {
+    "SiteCode": "BAT",
+    "SiteNo": 479,
+    "LAT": 35.548814,
+    "LONG": -82.516353,
+    "City": "Asheville",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "WJF",
+    "SiteNo": 510,
+    "LAT": 36.385449,
+    "LONG": -81.498527,
+    "City": "West Jefferson",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "WIL",
+    "SiteNo": 511,
+    "LAT": 34.320676,
+    "LONG": -77.927704,
+    "City": "Wilmington",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "HOK",
+    "SiteNo": 507,
+    "LAT": 43.061294,
+    "LONG": -71.447366,
+    "City": "Hooksett",
+    "Country": "USA",
+    "Status": "Constrained"
+}, {
+    "SiteCode": "HOK",
+    "SiteNo": 492,
+    "LAT": 40.769265,
+    "LONG": -73.115112,
+    "City": "Bohemia",
+    "Country": "USA",
+    "Status": "Risk"
+}, {
+    "SiteCode": "HOK",
+    "SiteNo": 494,
+    "LAT": 42.527926,
+    "LONG": -75.526108,
+    "City": "Norwich",
+    "Country": "USA",
+    "Status": "Constrained"
+}, {
+    "SiteCode": "HOK",
+    "SiteNo": 529,
+    "LAT": 43.084441,
+    "LONG": -76.875819,
+    "City": "Clyde",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "HOK",
+    "SiteNo": 462,
+    "LAT": 39.301479,
+    "LONG": -84.476183,
+    "City": "Springdale",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "HOK",
+    "SiteNo": 467,
+    "LAT": 38.932889,
+    "LONG": -83.303041,
+    "City": "Peebles",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "HOK",
+    "SiteNo": 474,
+    "LAT": 39.716446,
+    "LONG": -84.027323,
+    "City": "Dayton",
+    "Country": "USA",
+    "Status": "Risk"
+}, {
+    "SiteCode": "HOK",
+    "SiteNo": 498,
+    "LAT": 39.889467,
+    "LONG": -84.185975,
+    "City": "Dayton",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "HOK",
+    "SiteNo": 499,
+    "LAT": 39.847419,
+    "LONG": -84.188686,
+    "City": "Vandalia",
+    "Country": "USA",
+    "Status": "Constrained"
+}, {
+    "SiteCode": "HOK",
+    "SiteNo": 502,
+    "LAT": 39.310344,
+    "LONG": -84.432045,
+    "City": "West Chester",
+    "Country": "USA",
+    "Status": "Risk"
+}, {
+    "SiteCode": "EVD",
+    "SiteNo": 531,
+    "LAT": 39.246494,
+    "LONG": -84.444587,
+    "City": "Evendale",
+    "Country": "USA",
+    "Status": "Constrained"
+}, {
+    "SiteCode": "GNV",
+    "SiteNo": 513,
+    "LAT": 34.737733,
+    "LONG": -82.395556,
+    "City": "Piedmont",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "GNV",
+    "SiteNo": 525,
+    "LAT": 32.966976,
+    "LONG": -80.113523,
+    "City": "Ladson",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "GNV",
+    "SiteNo": 466,
+    "LAT": 26.15523,
+    "LONG": -98.277243,
+    "City": "McAllen",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "GNV",
+    "SiteNo": 505,
+    "LAT": 32.85368,
+    "LONG": -96.858608,
+    "City": "Dallas",
+    "Country": "USA",
+    "Status": "Constrained"
+}, {
+    "SiteCode": "GNV",
+    "SiteNo": 517,
+    "LAT": 32.699223,
+    "LONG": -97.057289,
+    "City": "Grand Prairie",
+    "Country": "USA",
+    "Status": "Risk"
+}, {
+    "SiteCode": "GNV",
+    "SiteNo": 526,
+    "LAT": 29.934663,
+    "LONG": -97.883463,
+    "City": "San Marcos",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "GNV",
+    "SiteNo": 486,
+    "LAT": 38.994403,
+    "LONG": -77.440781,
+    "City": "Sterling",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 508,
+    "LAT": 43.607388,
+    "LONG": -72.991744,
+    "City": "Rutland",
+    "Country": "USA",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 454,
+    "LAT": 55.49962417647656,
+    "LONG": -4.584058836452432,
+    "City": "Prestwick",
+    "Country": "UK",
+    "Status": "Risk"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 461,
+    "LAT": 51.565063,
+    "LONG": -3.256601,
+    "City": "Cardiff",
+    "Country": "UK",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 481,
+    "LAT": 51.864245,
+    "LONG": -2.238156,
+    "City": "Gloucester",
+    "Country": "UK",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 483,
+    "LAT": 50.862611,
+    "LONG": -1.330132,
+    "City": "Hamble-le-Rice",
+    "Country": "UK",
+    "Status": "Risk"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 488,
+    "LAT": 51.918983,
+    "LONG": -2.068466,
+    "City": "Cheltenham",
+    "Country": "UK",
+    "Status": "Constrained"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 493,
+    "LAT": 52.255874,
+    "LONG": 0.389665,
+    "City": "Newmarket",
+    "Country": "UK",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 520,
+    "LAT": 51.467564,
+    "LONG": -0.410809,
+    "City": "Heathrow",
+    "Country": "UK",
+    "Status": "Constrained"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 519,
+    "LAT": 25.219337,
+    "LONG": 55.279944,
+    "City": "",
+    "Country": "UAE",
+    "Status": "Risk"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 528,
+    "LAT": 39.797698,
+    "LONG": 30.52237,
+    "City": "",
+    "Country": "Turkey",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 463,
+    "LAT": 1.352083,
+    "LONG": 103.819836,
+    "City": "Singapore (SG)",
+    "Country": "Singapore",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 464,
+    "LAT": 1.383286,
+    "LONG": 103.974481,
+    "City": "Singapore (SG)",
+    "Country": "Singapore",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 476,
+    "LAT": 44.43432,
+    "LONG": 26.035703,
+    "City": "Bucharest",
+    "Country": "Romania",
+    "Status": "Constrained"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 518,
+    "LAT": 25.334755,
+    "LONG": 51.448083,
+    "City": "Ar-Rayyan",
+    "Country": "Qatar",
+    "Status": "Risk"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 470,
+    "LAT": 49.822377,
+    "LONG": 19.058384,
+    "City": "Bielsko-Biala",
+    "Country": "Poland",
+    "Status": "Constrained"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 475,
+    "LAT": 50.733418,
+    "LONG": 16.638444,
+    "City": "Dzierzoniow",
+    "Country": "Poland",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 497,
+    "LAT": 25.360676,
+    "LONG": -101.022393,
+    "City": "Saltillo",
+    "Country": "Mexico",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 458,
+    "LAT": 3.126318,
+    "LONG": 101.553065,
+    "City": "Subang",
+    "Country": "Malaysia",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 521,
+    "LAT": 37.617216,
+    "LONG": 126.574806,
+    "City": "Seoul",
+    "Country": "Korea",
+    "Status": "Risk"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 468,
+    "LAT": 40.629741,
+    "LONG": 17.959255,
+    "City": "Brindisi",
+    "Country": "Italy",
+    "Status": "Constrained"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 471,
+    "LAT": 40.916865,
+    "LONG": 14.398106,
+    "City": "Pomigliano D'Arco",
+    "Country": "Italy",
+    "Status": "Risk"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 469,
+    "LAT": 45.499867,
+    "LONG": 8.66356,
+    "City": "Cameri",
+    "Country": "Italy",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 472,
+    "LAT": 45.0089,
+    "LONG": 7.607038,
+    "City": "Beinasco",
+    "Country": "Italy",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 465,
+    "LAT": 47.654248,
+    "LONG": 19.280257,
+    "City": "Veresegyhaz",
+    "Country": "Hungary",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 516,
+    "LAT": 48.99484,
+    "LONG": 12.14917,
+    "City": "Regensburg",
+    "Country": "Germany",
+    "Status": "Risk"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 524,
+    "LAT": 48.603904,
+    "LONG": 2.655674,
+    "City": "",
+    "Country": "France",
+    "Status": "Constrained"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 459,
+    "LAT": 50.134912,
+    "LONG": 14.514289,
+    "City": "Prague",
+    "Country": "CzechRepublic",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 509,
+    "LAT": 31.339786,
+    "LONG": 120.728033,
+    "City": "Suzhou",
+    "Country": "China",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 522,
+    "LAT": 31.192255,
+    "LONG": 121.583773,
+    "City": "Pudong",
+    "Country": "China",
+    "Status": "Risk"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 506,
+    "LAT": 45.302682,
+    "LONG": -72.708028,
+    "City": "Bromont",
+    "Country": "Canada",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 455,
+    "LAT": -22.513861,
+    "LONG": -43.214382,
+    "City": "Petropolis",
+    "Country": "Brazil",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 523,
+    "LAT": -22.803475,
+    "LONG": -43.228966,
+    "City": "Rio de Janeiro",
+    "Country": "Brazil",
+    "Status": "Acceptable"
+}, {
+    "SiteCode": "RUT",
+    "SiteNo": 487,
+    "LAT": -27.395633,
+    "LONG": 153.112157,
+    "City": "Brisbane",
+    "Country": "Australia",
+    "Status": "Constrained"
+}]

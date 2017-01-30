@@ -10,8 +10,7 @@ define([
     'interceptors',
     'px-datasource',
     'ng-bind-polymer',
-    'angular-animate',
-    'materialize'
+    'angular-animate'
 ], function ($, angular) {
     'use strict';
     /**
