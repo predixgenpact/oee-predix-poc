@@ -1,3 +1,3 @@
-define(['modules/main'], function() {
+define(['./modules/main'], function() {
 
 });
