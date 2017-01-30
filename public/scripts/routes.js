@@ -31,10 +31,17 @@ define(['angular', 'angular-ui-router'], function(angular) {
             })*/
             .state('dashboard', {
                 //parent: 'secure',
-                url: '/dashboard',
+                url: '/',
                 templateUrl: 'views/oee-dashboard.html',
                 controller: 'OeeDashboardCtrl'
             })
+            .state('valueStreams', {
+                //parent: 'secure',
+                url: '/valueStreams',
+                templateUrl: 'views/oee-all-value-streams.html',
+                controller: 'OeeAllValueStreamsCtrl'
+            });
+;
 
         // $urlRouterProvider.otherwise(function ($injector) {
         //     var $state = $injector.get('$state');
@@ -42,6 +49,6 @@ define(['angular', 'angular-ui-router'], function(angular) {
         //     $state.go('defectRatio');
         // });
 
-        $urlRouterProvider.otherwise('/dashboard');
+        $urlRouterProvider.otherwise('/');
     }]);
 });

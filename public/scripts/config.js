@@ -38,6 +38,7 @@ require.config({
         // Named References
         config: './config',
         app: './app',
+        main: './main',
 
         // angularjs + modules
         angular: '../bower_components/angular/angular',
@@ -69,7 +70,7 @@ require.config({
         jquery: '../bower_components/jquery/dist/jquery.min',
         highcharts: '../bower_components/highcharts/highcharts',
         'materialize': '../bower_components/materialize/dist/js/materialize.min',
-        'app-module': '../scripts/modules/app-module'
+        'app-module': './modules/app-module'
     },
     priority: [
         'jquery',
@@ -100,7 +101,7 @@ require.config({
             deps: ['jquery']
         },
         'app': {
-            deps: ['angular']
+            deps: ['angular', 'app-module', 'main']
         }
 
     }
