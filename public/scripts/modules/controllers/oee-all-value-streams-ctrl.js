@@ -15,8 +15,10 @@ define(['angular', '../app-module'], function (angular) {
             }
         }
 
-        $scope.toggleRow = function (){
-            $scope.oeeAllValueStreamsObj.table.row.show = !$scope.oeeAllValueStreamsObj.table.row.show;
+        $scope.toggleTableRow = function (row) {
+            if (row) {
+                document.getElementById(row).style.display = 'table-row';                
+            }
         }
     }
 });

@@ -150,7 +150,6 @@ footer ul li span {
 
 
 #valueStreamTable {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
@@ -161,7 +160,7 @@ border: 1px solid #ddd;}
 #valueStreamTable tr:nth-child(odd){background-color: #f2f2f2;}
 
 #valueStreamTable thead tr{
-    background-color: #649CC2 !important;
+    background-color: #00838f !important;
     color: white;
 }
 
@@ -249,4 +248,20 @@ border: 1px solid #ddd;}
 
 .view-sort , .view-options{
     text-align: right;
+}
+
+.value-stream-table {
+    padding: 45px 15px;
+}
+
+tbody tr {
+    display: none;
+}
+
+tbody tr#valueStreams {
+    display: table-row;
+}
+
+#valueStreamTable td {
+    text-align: left;
 }
