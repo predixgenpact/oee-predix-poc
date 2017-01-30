@@ -239,3 +239,14 @@ border: 1px solid #ddd;}
 .px-dropdown-content-0 .px-dropdown--content.px-dropdown-content {
     width: 100% !important;
 }
+
+
+.view-options [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+    position: initial !important;
+    left: o !important;
+    opacity: 1 !important;
+}
+
+.view-sort , .view-options{
+    text-align: right;
+}
