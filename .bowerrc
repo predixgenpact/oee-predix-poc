@@ -1,5 +1,5 @@
 {
-  "proxy":"http://proxy.jfwtc.ge.com:8080/",
-  "https-proxy":"http://proxy.jfwtc.ge.com:8080/",
+  "proxy":"http://182.95.70.43:80/",
+  "https-proxy":"http://182.95.70.43:80/",
   "directory": "public/bower_components"
 }
