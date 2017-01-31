@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Predix Seed</title>
     <base href="/">
@@ -17,6 +18,8 @@
     <!-- Requires Webcomponents.js polyfill is provided by the page for browsers that don't support html imports -->
     <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+
     <link rel="import" href="polymer-loader.html">
     <link rel="import" href="polymer-loader.vulcanized.html">
     <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
@@ -25,7 +28,7 @@
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css" media="screen,projection" />
 
     <!--<link type="text/css" rel="stylesheet" href="bower_components/angular-bootstrap-grid-tree/src/treeGrid.css">-->
     <!--<link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">-->
@@ -33,15 +36,15 @@
 
 <body unresolved data-ng-controller="MainCtrl">
     <header class="fixed-header">
-            <ul>
-                <li>
-                    <span href="#home" style="padding: 0px;">
+        <ul>
+            <li>
+                <span href="#home" style="padding: 0px;">
                         <img src="./images/GE-logo.png" alt="Not Found">
                     </span>
-                </li>
-                <li><span style="font-size: 18px;">Overall Equipment Effectiveness</span></li>
-                <li class="right hide-on-med-and-down"><span style="font-size: 14px; padding:13px;">Powered by Predix</span></li>
-            </ul>
+            </li>
+            <li><span style="font-size: 18px;">Overall Equipment Effectiveness</span></li>
+            <li class="right hide-on-med-and-down"><span style="font-size: 14px; padding:13px;">Powered by Predix</span></li>
+        </ul>
     </header>
     <div class="page-content">
         <!-- Show Page Loading Spinner-->
@@ -51,7 +54,7 @@
     <footer>
         <ul>
             <li><span class="grey-text">Copyright © 2017 All rights reserved</span></li>
-            <li class="right hide-on-med-and-down"><span><a class="grey-text" href="https://www.ge.com/privacy" target="_blank">Privacy</a></span></li>                                        
+            <li class="right hide-on-med-and-down"><span><a class="grey-text" href="https://www.ge.com/privacy" target="_blank">Privacy</a></span></li>
             <li class="right hide-on-med-and-down"><span><a class="grey-text" href="https://www.ge.com/terms" target="_blank">Terms of Use</a></span></li>
         </ul>
     </footer>
@@ -59,7 +62,7 @@
     <span return-to-top></span>
     <google-analytics code="UA-72329845-1"></google-analytics>
     <!-- Google Maps -->
-    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&language=en"></script>
+    <script async defer src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCtBI6mtWdJNgy7p4ZXz9Mbzkawtnrh1Qc&language=en"></script>
 </body>
 <script>
     // IE11 workaround: We can't rely on IE's load order for scripts that are loaded outside of require.js (might
@@ -71,6 +74,17 @@
         elScript.setAttribute('data-main', 'scripts/bootstrapper.js');
         document.getElementsByTagName('body')[0].appendChild(elScript);
     });
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-12846745-20']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' === document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
 </script>
 
 </html>
