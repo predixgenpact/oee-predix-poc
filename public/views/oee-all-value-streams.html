@@ -1,47 +1,61 @@
-<div class="row">
-    <div class="col s12 m12 l12">
-        <ul>
-            <li>
-                Back
-            </li>
-            <li>
-                Next
-            </li>
-        </ul>
-    </div>
-</div>
-
-<!--Dashboard Filter -->
 <!-- Filter Content -->
 <div class="row vs-filter" data-ng-style="oeeAllValueStreamsObj.filter.style">
-    <div class="col s12 m12 l12" data-ng-style="oeeAllValueStreamsObj.filterIcon.style">
-        <div class="col s6 m6 l6">
-            <select name="" id="" style="display: block;">
-                <option value="constraints">Constraints</option>
-                <option value="alphabetically">Alphabetically</option>
+    <div class="col s12 m12 l12">
+        <div class="col s3 m4 l5">
+            <select class="right vs-filter-sort-by" data-ng-model="oeeAllValueStreamsObj.filter.selectedOptions" data-ng-change="update()" data-ng-options="item for item in oeeAllValueStreamsObj.filter.sortByOptions">
+                <option style="display:none" value="">Sort By</option>
             </select>
         </div>
-        <div class="col s6 m6 l6">
-            <strong>View Options</strong>
-            <input class="view-options" type="checkbox" name="sortby" value="ConstraintsOnly"> Constraints Only
-            <input class="view-options" type="checkbox" name="sortby" value="showThroughput"> Show Throughput
+        <div class="col s9 m8 l7 view-options" style="padding: 12px;">
+            <span>
+                <input type="checkbox" name="sortby" 
+                    data-ng-model="oeeAllValueStreamsObj.filter.viewOptionConstrain[0]['isChecked']" 
+                    value="ConstraintsOnly" data-ng-change="update(oeeAllValueStreamsObj.filter.viewOptionConstrain)" 
+                    data-ng-checked="oeeAllValueStreamsObj.filter.viewOptionConstrain[0]['isChecked']"> Constraints Only
+            </span>
+            <span>
+                <input type="checkbox" name="sortby" 
+                    data-ng-model="oeeAllValueStreamsObj.filter.viewOptionConstrain[1]['isChecked']"
+                    value="showThroughput" data-ng-change="update(oeeAllValueStreamsObj.filter.viewOptionConstrain)"
+                    data-ng-checked="oeeAllValueStreamsObj.filter.viewOptionConstrain[1]['isChecked']"> Show Throughput                
+            </span>
+            <span style="padding: 0 10px;">
+                <button id="Applybtn" class="btn btn--primary" type="button" data-ng-disabled="oeeAllValueStreamsObj.filter.applyButton" data-ng-click="applyFilter()">Apply</button>                
+            </span>
+            <span style="padding: 0 10px;">
+                <button id="Resetbtn" class="btn btn--default" type="button" data-ng-disabled="oeeAllValueStreamsObj.filter.resetButton"  data-ng-click="resetFilter()">Reset</button>                
+            </span>
         </div>
     </div>
 </div>
-<!-- / Filter Content -->
+
 <!-- Filter Icon -->
 <div class="row vs-filter-icon" data-ng-style="oeeAllValueStreamsObj.filterIcon.style">
-        <a href="javascript:void(0)" data-ng-click="toogleFilter()">
-            <i class="fa fa-filter" data-ng-hide="oeeAllValueStreamsObj.filter.show" aria-hidden="true"></i>
-            <i class="fa fa-times-circle" data-ng-show="oeeAllValueStreamsObj.filter.show" aria-hidden="true"></i>
-            &nbsp;            
-            <span data-ng-bind="oeeDashboardObj.filter.show ? 'Close' : 'Filters'"></span>
+    <a href="javascript:void(0)" data-ng-click="toogleFilter()">
+        <i class="fa fa-filter" data-ng-hide="oeeAllValueStreamsObj.filter.show" aria-hidden="true"></i>
+        <i class="fa fa-times-circle" data-ng-show="oeeAllValueStreamsObj.filter.show" aria-hidden="true"></i> &nbsp;
+        <span data-ng-bind="oeeDashboardObj.filter.show ? 'Close' : 'Filters'"></span>
+    </a>
+</div>
+
+<!-- Back and Next Button -->
+<div class="row card page-action">
+    <div class="col s4 m4 l4">
+        <a ui-sref="dashboard">
+            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+            <span>Back</span>
         </a>
+    </div>
+    <div class="col s4 m4 l4"></div>
+    <div class="col s4 m4 l4">
+        <a ui-sref="dashboard">
+            <span>Next</span>
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+        </a>
+    </div>
 </div>
-<!-- / Filter Icon -->
-<!-- / Dashboard Filter -->
-
+<!-- Table-->
 <div class="row value-stream-table">
-     <tree-grid tree-data="tree_data" style="margin: 15px 30px;" class="vs-table" on-select="tableHandler(branch)" on-click="tableHandler(branch)"></tree-grid>
+    <tree-grid tree-data="tree_data" class="vs-table" on-select="tableHandler(branch)" on-click="tableHandler(branch)" icon-leaf="-" icon-expand="fa fa-chevron-right" icon-collapse="fa fa-chevron-down">
+    </tree-grid>
 </div>
-
