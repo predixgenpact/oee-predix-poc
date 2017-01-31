@@ -40,7 +40,8 @@
     "google-analytics": "~0.1.0",
     "highcharts": "^5.0.7",
     "bootstrap-select": "^1.12.1",
-    "materialize": "^0.98.0"
+    "materialize": "^0.98.0",
+    "angular-bootstrap-grid-tree": "^0.4.0"
   },
   "resolutions": {
     "web-animations-js": "~2.0.0",
