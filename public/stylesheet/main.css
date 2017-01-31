@@ -239,6 +239,11 @@ border: 1px solid #ddd;}
     width: 100% !important;
 }
 
+#filterContent{
+    margin: 15px 240px;
+    height: 35px;
+    display: none
+}
 
 .view-options [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
     position: initial !important;
@@ -254,14 +259,49 @@ border: 1px solid #ddd;}
     padding: 45px 15px;
 }
 
-tbody tr {
+tbody.temp tr {
     display: none;
 }
 
-tbody tr#valueStreams {
+tbody.temp tr#valueStreams {
     display: table-row;
 }
 
 #valueStreamTable td {
     text-align: left;
+}
+
+/*For Ipad*/
+@media screen and (min-device-width:700px) and (max-device-width: 1050px){
+#filterContent{
+    margin: 15px;
+    height: 35px;
+    display: none
+}
+}
+
+/*For Iphone*/
+@media screen and (max-device-width:650px){
+#filterContent{
+    margin: 0px;
+    height: 35px;
+    display: none;
+    margin-top: 2%;
+}
+#Country{
+    margin-top: 2%;
+}
+#Site{
+    margin-top: 2%;
+}
+#Btn{
+    margin-top: 2%;
+}
+#Resetbtn{
+    float: right;
+    margin-right: 2%;   
+}
+#Applybtn{
+    float:right;
+}
 }

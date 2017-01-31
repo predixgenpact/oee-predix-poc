@@ -1,26 +1,26 @@
 <!-- Dashboard Filter -->
 <!-- Filter Content -->
 <div class="row filter" data-ng-style="oeeDashboardObj.filter.style">
-    <div data-ng-style="oeeDashboardObj.filterContent.style">
-        <div class="col s4 m3 l3">
-             <px-dropdown display-value="Select Status" checkbox-mode="true">
+    <div data-ng-style="oeeDashboardObj.filterContent.style" id="filterContent">
+        <div class="col s12 m3 l3">
+            <px-dropdown display-value="Select Status" checkbox-mode="true">
                 <px-dropdown-content id="test" checkbox-mode extend-dropdown='true' extend-dropdown-by='25' max-cont-character-width='15' items='[{"key":"key1","val":"Acceptable","checked":true},{"key":"key2","val":"Risk","checked":true},{"key":"key3","val":"Constrained","checked":true}]'>
                 </px-dropdown-content>
-              </px-dropdown>
+            </px-dropdown>
         </div>
-        <div class="col s4 m3 l3">
+        <div class="col s12 m3 l3" id="Country">
             <px-dropdown display-value="Select Country" checkbox-mode="true">
                 <px-dropdown-content id="test2" checkbox-mode extend-dropdown='true' extend-dropdown-by='25' max-cont-character-width='10' items='[{"key":"key1","val":"Australia","checked":true},{"key":"key2","val":"Brazil","checked":true},{"key":"key3","val":"Canada","checked":true},{"key":"key4","val":"China","checked":true},{"key":"key5","val":"CzechRepublic","checked":true},{"key":"key6","val":"France","checked":true},{"key":"key7","val":"Germany","checked":true},{"key":"key8","val":"Hungary","checked":true},{"key":"key9","val":"Italy","checked":true},{"key":"key10","val":"Korea","checked":true},{"key":"key11","val":"Malaysia","checked":true},{"key":"key12","val":"Mexico","checked":true},{"key":"key13","val":"Poland","checked":true},{"key":"key14","val":"Qatar","checked":true},{"key":"key15","val":"Romania","checked":true},{"key":"key16","val":"Singapore","checked":true},{"key":"key17","val":"Turkey","checked":true},{"key":"key18","val":"UAE","checked":true},{"key":"key19","val":"UK","checked":true},{"key":"key20","val":"USA","checked":true}]'>
                 </px-dropdown-content>
             </px-dropdown>
         </div>
-        <div class="col s4 m3 l3">
-             <px-dropdown display-value="Select Site Code" checkbox-mode="true">
+        <div class="col s12 m3 l3" id="Site">
+            <px-dropdown display-value="Select Site Code" checkbox-mode="true">
                 <px-dropdown-content id="test1" checkbox-mode extend-dropdown='true' extend-dropdown-by='25' max-cont-character-width='10' items='[{"key":"key1","val":"AUB","checked":true},{"key":"key2","val":"BAT","checked":true},{"key":"key3","val":"EVD","checked":true},{"key":"key4","val":"GNV","checked":true},{"key":"key5","val":"HOK","checked":true},{"key":"key6","val":"LYN","checked":true},{"key":"key7","val":"MAD","checked":true},{"key":"key8","val":"RUT","checked":true},{"key":"key9","val":"WIL","checked":true},{"key":"key10","val":"WJF","checked":true}]'>
                 </px-dropdown-content>
-              </px-dropdown>
+            </px-dropdown>
         </div>
-        <div class="col s4 m3 l3">
+        <div class="col s12 m3 l3" id="Btn">
             <button id="Applybtn" class="btn btn--primary" type="button" data-ng-disabled="oeeDashboardObj.disableResetFilterBtn" data-ng-click="applyFilter();">Apply</button>
             <button id="Resetbtn" class="btn btn--default" type="button" data-ng-disabled="oeeDashboardObj.disableResetFilterBtn" data-ng-click="resetFilter()">Reset</button>
         </div>
@@ -28,13 +28,12 @@
 </div>
 <!-- / Filter Content -->
 <!-- Filter Icon -->
-<div class="row filter-icon" data-ng-style="oeeDashboardObj.filterIcon.style">
-        <a href="javascript:void(0)" data-ng-click="toogleFilter()">
-            <i data-ng-if="!oeeDashboardObj.filter.show" class="fa fa-filter" aria-hidden="true"></i>
-            <i data-ng-if="oeeDashboardObj.filter.show" class="fa fa-times-circle" aria-hidden="true"></i>
-            &nbsp;            
-            <span data-ng-bind="oeeDashboardObj.filter.show ? 'Close' : 'Filters'"></span>
-        </a>
+<div class="row filter-icon" data-ng-style="oeeDashboardObj.filterIcon.style" id="">
+    <a href="javascript:void(0)" data-ng-click="toogleFilter()">
+        <i data-ng-if="!oeeDashboardObj.filter.show" class="fa fa-filter" aria-hidden="true"></i>
+        <i data-ng-if="oeeDashboardObj.filter.show" class="fa fa-times-circle" aria-hidden="true"></i> &nbsp;
+        <span data-ng-bind="oeeDashboardObj.filter.show ? 'Close' : 'Filters'"></span>
+    </a>
 </div>
 <!-- / Filter Icon -->
 <!-- / Dashboard Filter -->
@@ -50,23 +49,23 @@
             <i class="fa fa-times-circle right" aria-hidden="true" style="cursor: pointer;" data-ng-click="closeInfoCard()"></i>
         </span>
         <p class="grey-text" style="font-size:0.8rem;color:#7c7c84 !important">This map is used to identify OEE Constraints at a glance at the shop level.</p>
-       <div class="card-content" style="padding:0px !important;font-size: 0.8rem">
-    <table style="margin-left: 10%">
-        <tbody>
-          <tr id="Acceptable">
-            <td style="padding:0px !important;width: 25px !important"><img src="../images/AcceptableOEE.png"></td>
-            <td style="padding:0px !important">Acceptable OEE</td>
-          </tr>
-          <tr id="Risk">
-            <td style="padding:0px !important;width: 25px !important;width: 25px !important"><img src="../images/AtRisk.png"></td>
-            <td style="padding:0px !important">At Risk</td>
-          </tr>
-          <tr id="Constrained">
-            <td style="padding:0px !important;width: 25px !important"><img src="../images/Constrained.png"></td>
-            <td style="padding:0px !important">Constrained</td>
-          </tr>
-        </tbody>
-      </table>
+        <div class="card-content" style="padding:0px !important;font-size: 0.8rem">
+            <table style="margin-left: 10%">
+                <tbody>
+                    <tr id="Acceptable">
+                        <td style="padding:0px !important;width: 25px !important"><img src="../images/AcceptableOEE.png"></td>
+                        <td style="padding:0px !important">Acceptable OEE</td>
+                    </tr>
+                    <tr id="Risk">
+                        <td style="padding:0px !important;width: 25px !important;width: 25px !important"><img src="../images/AtRisk.png"></td>
+                        <td style="padding:0px !important">At Risk</td>
+                    </tr>
+                    <tr id="Constrained">
+                        <td style="padding:0px !important;width: 25px !important"><img src="../images/Constrained.png"></td>
+                        <td style="padding:0px !important">Constrained</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
     <!-- / Info Card -->
@@ -79,4 +78,3 @@
     <!-- / Value Stream Button-->
 </div>
 <!-- / Dashboard Content -->
-
