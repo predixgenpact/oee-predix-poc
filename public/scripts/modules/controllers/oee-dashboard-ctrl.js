@@ -365,7 +365,7 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
                     sessionStorage.setItem("SelectedSiteNo", marker.SiteNo);
 
                     marker.setAnimation(google.maps.Animation.BOUNCE);
-                    window.location.href = "/OEESummary";
+                    window.location.href = "/oeeSummary";
                 }
             });
             //To Set the bounds dynamically                                  
