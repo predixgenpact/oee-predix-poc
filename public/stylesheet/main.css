@@ -354,13 +354,18 @@ footer ul li span {
     font-size: 18px !important;
 }
 
+#filterContent{
+    margin: 15px 240px;
+    height: 35px;
+    display: none;
+}
 
 /*For Ipad*/
 @media screen and (min-device-width:700px) and (max-device-width: 1050px){
 #filterContent{
     margin: 15px;
     height: 35px;
-    display: none
+    display: none;
 }
 }
 
@@ -387,4 +392,5 @@ footer ul li span {
 }
 #Applybtn{
     float:right;
+}
 }
