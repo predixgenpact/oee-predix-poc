@@ -128,7 +128,7 @@ define(['angular', '../app-module'], function(angular) {
                     'Actual': '-',
                     'Delinquency': '-',
                     children: [{
-                        'Value Streams': "Mechine ##",
+                        'Value Streams': "Machine ##",
                         'Availability': "XX%",
                         'Performance': "XX%",
                         'Quality Rate': "XX%",
@@ -172,7 +172,6 @@ define(['angular', '../app-module'], function(angular) {
             },
             {
                 'Value Streams': "Turbine Airfoils",
-                'Availability': 9826675,
                 'Availability': "XX%",
                 'Performance': "XX%",
                 'Quality Rate': "XX%",
@@ -183,7 +182,6 @@ define(['angular', '../app-module'], function(angular) {
             },
             {
                 'Value Streams': "Assembly Test & MRO",
-                'Availability': 9826675,
                 'Availability': "XX%",
                 'Performance': "XX%",
                 'Quality Rate': "XX%",
