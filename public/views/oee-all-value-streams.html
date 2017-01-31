@@ -1,135 +1,61 @@
- <!--Dashboard Filter -->
 <!-- Filter Content -->
-<!--<div class="row filter">
-    <div>
-        <div class="col s6 m6 l6 view-sort">
-            <strong>Sort By<strong><br/>
-            <input type="radio" name="sortby" value="Constraints"> Constraints
-            <br/>
-            <input type="radio" name="sortby" value="Alphabetically"> Alphabetically
+<div class="row vs-filter" data-ng-style="oeeAllValueStreamsObj.filter.style">
+    <div class="col s12 m12 l12">
+        <div class="col s3 m4 l5">
+            <select class="right vs-filter-sort-by" data-ng-model="oeeAllValueStreamsObj.filter.selectedOptions" data-ng-change="update()" data-ng-options="item for item in oeeAllValueStreamsObj.filter.sortByOptions">
+                <option style="display:none" value="">Sort By</option>
+            </select>
         </div>
-         <div class="col s6 m6 l6 view-options">
-            <strong>View Options</strong><br/>
-            <input class="view-options" type="checkbox" name="sortby" value="ConstraintsOnly"> Constraints Only
-            <br/>
-            <input class="view-options" type="checkbox" name="sortby" value="showThroughput"> Show Throughput
+        <div class="col s9 m8 l7 view-options" style="padding: 12px;">
+            <span>
+                <input type="checkbox" name="sortby" 
+                    data-ng-model="oeeAllValueStreamsObj.filter.viewOptionConstrain[0]['isChecked']" 
+                    value="ConstraintsOnly" data-ng-change="update(oeeAllValueStreamsObj.filter.viewOptionConstrain)" 
+                    data-ng-checked="oeeAllValueStreamsObj.filter.viewOptionConstrain[0]['isChecked']"> Constraints Only
+            </span>
+            <span>
+                <input type="checkbox" name="sortby" 
+                    data-ng-model="oeeAllValueStreamsObj.filter.viewOptionConstrain[1]['isChecked']"
+                    value="showThroughput" data-ng-change="update(oeeAllValueStreamsObj.filter.viewOptionConstrain)"
+                    data-ng-checked="oeeAllValueStreamsObj.filter.viewOptionConstrain[1]['isChecked']"> Show Throughput                
+            </span>
+            <span style="padding: 0 10px;">
+                <button id="Applybtn" class="btn btn--primary" type="button" data-ng-disabled="oeeAllValueStreamsObj.filter.applyButton" data-ng-click="applyFilter()">Apply</button>                
+            </span>
+            <span style="padding: 0 10px;">
+                <button id="Resetbtn" class="btn btn--default" type="button" data-ng-disabled="oeeAllValueStreamsObj.filter.resetButton"  data-ng-click="resetFilter()">Reset</button>                
+            </span>
         </div>
     </div>
-</div>-->
-<!-- / Filter Content -->
+</div>
+
 <!-- Filter Icon -->
-<!--<div class="row filter-icon" >
-        <a href="javascript:void(0)" data-ng-click="toogleFilter()">
-            <i class="fa fa-filter" aria-hidden="true"></i>
-            <i class="fa fa-times-circle" aria-hidden="true"></i>
-            &nbsp;            
-            <span data-ng-bind="oeeDashboardObj.filter.show ? 'Close' : 'Filters'"></span>
+<div class="row vs-filter-icon" data-ng-style="oeeAllValueStreamsObj.filterIcon.style">
+    <a href="javascript:void(0)" data-ng-click="toogleFilter()">
+        <i class="fa fa-filter" data-ng-hide="oeeAllValueStreamsObj.filter.show" aria-hidden="true"></i>
+        <i class="fa fa-times-circle" data-ng-show="oeeAllValueStreamsObj.filter.show" aria-hidden="true"></i> &nbsp;
+        <span data-ng-bind="oeeDashboardObj.filter.show ? 'Close' : 'Filters'"></span>
+    </a>
+</div>
+
+<!-- Back and Next Button -->
+<div class="row card page-action">
+    <div class="col s4 m4 l4">
+        <a ui-sref="dashboard">
+            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+            <span>Back</span>
         </a>
-</div>-->
-<!-- / Filter Icon -->
-<!-- / Dashboard Filter -->
-
+    </div>
+    <div class="col s4 m4 l4"></div>
+    <div class="col s4 m4 l4">
+        <a ui-sref="dashboard">
+            <span>Next</span>
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+        </a>
+    </div>
+</div>
+<!-- Table-->
 <div class="row value-stream-table">
-     <table class="highlight" id="valueStreamTable">
-        <thead>
-            <tr>
-                <th rowspan="2">Value Streams</th>
-                <th colspan="4">Overall Equipment Effectiveness</th>
-                <th colspan="3">Throughput</th>
-            </tr>
-            <tr>
-                <th data-field="name">Availablilty</th>
-                <th data-field="price">Performance</th>
-                <th data-field="price">Quality Rate</th>
-                <th data-field="price">OEE</th>
-                <th data-field="price">Target</th>
-                <th data-field="price">Actual</th>
-                <th data-field="price">Delinquency</th>
-            </tr>
-        </thead>
-
-        <tbody class="temp">
-          <tr id="valueStreams">
-            <td data-ng-click="toggleTableRow('siteName')">
-                Rotating parts & Compressor Airfoils
-                <i class="fa fa-angle-up" aria-hidden="true"></i>
-                <i class="fa fa-chevron-down" aria-hidden="true"></i>
-            </td>
-            <td>XX%</td>
-            <td>XX%</td>
-            <td>XX%</td>
-            <td>XX%</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-          </tr>
-        <tr id="siteName" data-ng-class="">
-            <td data-ng-click="toggleTableRow('machine1')">Site Name
-                <i class="fa fa-angle-up" aria-hidden="true"></i>
-                <i class="fa fa-chevron-down" aria-hidden="true"></i>
-            </td>
-            <td>XX%</td>
-            <td>XX%</td>
-            <td>XX%</td>
-            <td>XX%</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-        <tr data-ng-class="" id="machine1">
-            <td data-ng-click="toggleTableRow('part')">Mechine ##
-                <i class="fa fa-angle-up" aria-hidden="true"></i>
-                <i class="fa fa-chevron-down" aria-hidden="true"></i>
-            </td>
-            <td>XX%</td>
-            <td>XX%</td>
-            <td>XX%</td>
-            <td>XX%</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-        <tr class="part" data-ng-class="">
-            <td data-ng-click="toggleTableRow()">Part # XXXX001</td>
-            <td>XX%</td>
-            <td>XX%</td>
-            <td>XX%</td>
-            <td>XX%</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-        <tr class="part" data-ng-class="">
-            <td data-ng-click="toggleTableRow()">Part # XXXX002</td>
-            <td>XX%</td>
-            <td>XX%</td>
-            <td>XX%</td>
-            <td>XX%</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-          
-         <tr class="part" data-ng-class="">
-            <td data-ng-click="toggleTableRow()">Turbine Airfoils</td>
-            <td>XX%</td>
-            <td>XX%</td>
-            <td>XX%</td>
-            <td>XX%</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-          </tr>
-        <tr class="part">
-            <td data-ng-click="toggleTableRow()">Assembly Test & MRO</td>
-            <td>XX%</td>
-            <td>XX%</td>
-            <td>XX%</td>
-            <td>XX%</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-          </tr>
-        </tbody>
-      </table>
+    <tree-grid tree-data="tree_data" class="vs-table" on-select="tableHandler(branch)" on-click="tableHandler(branch)" icon-leaf="-" icon-expand="fa fa-chevron-right" icon-collapse="fa fa-chevron-down">
+    </tree-grid>
 </div>

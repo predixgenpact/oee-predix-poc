@@ -70,7 +70,8 @@ require.config({
         jquery: '../bower_components/jquery/dist/jquery.min',
         highcharts: '../bower_components/highcharts/highcharts',
         'materialize': '../bower_components/materialize/dist/js/materialize.min',
-        'app-module': './modules/app-module'
+        'app-module': './modules/app-module',
+        'treeGrid': './modules/directives/tree-grid-directive'
     },
     priority: [
         'jquery',
@@ -102,6 +103,9 @@ require.config({
         },
         'app': {
             deps: ['angular', 'app-module', 'main']
+        },
+        'treeGrid': {
+            deps: ['angular']
         }
 
     }

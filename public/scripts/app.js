@@ -10,7 +10,8 @@ define([
     'interceptors',
     'px-datasource',
     'ng-bind-polymer',
-    'angular-animate'
+    'angular-animate',
+    'treeGrid'
 ], function ($, angular) {
     'use strict';
     /**
@@ -24,7 +25,8 @@ define([
         'app.module',
         'predix.datasource',
         'px.ngBindPolymer',
-        'ngAnimate'
+        'ngAnimate',
+        'treeGrid'
     ]);
 
     /**
