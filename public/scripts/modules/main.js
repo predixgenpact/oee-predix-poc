@@ -3,6 +3,7 @@ define(['./app-module',
     './services/predix-user-service',
     './services/predix-view-service',
     './controllers/oee-dashboard-ctrl',
-    './controllers/oee-all-value-streams-ctrl'
+    './controllers/oee-all-value-streams-ctrl',
+    './controllers/oee-summary-ctrl'
     ], function() {
 });
