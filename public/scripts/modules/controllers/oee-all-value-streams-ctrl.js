@@ -61,7 +61,7 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
         OeeSupplyChainService.getSupplyChainServiceData(childUrl)
             .then(function(response) {
                 $scope.tree_data = angular.copy(makeTableJson(response));
-                //console.log(JSON.stringify($scope.tree_data));
+               // console.log(JSON.stringify($scope.tree_data));
                 angular.element(".page-loading").addClass("hidden");
                 angular.element("#ui-view").show();
 
@@ -77,8 +77,6 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
 
         function makeTableJson(data) {
             var tempJson = [];
-
-
             for (var i in data.subTierSiteMap) {
                 // sit map - main
                 var temp = {
@@ -119,32 +117,30 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
                                 }
                                 temp.children[temp.children.length - 1].children = [];
                                 for (var l = 0; l < data.siteAndAssetNumberrMapList[k][tempSiteId].length; l++) {
+                                    var tempMachineData = {
+                                        'Availability': (data.siteAndAssetNumberrMapList[k][tempSiteId][l]['availabilty'] * 100),
+                                        'Performance': (data.siteAndAssetNumberrMapList[k][tempSiteId][l]['performance'] * 100),
+                                        'Quality Rate': (data.siteAndAssetNumberrMapList[k][tempSiteId][l]['qualityrate'] * 100 ),
+                                        'OEE': (data.siteAndAssetNumberrMapList[k][tempSiteId][l]['oeePercentage'] * 100 )
+                                    };
                                     // machine name
-                                    //console.log(data.siteAndAssetNumberrMapList[k][tempSiteId][l]['availabilty']);
                                     temp.children[temp.children.length - 1].children.push({
                                         'Value Streams': 'Machine## ' + data.siteAndAssetNumberrMapList[k][tempSiteId][l]['assetNumberId'],
-                                        'Availability': data.siteAndAssetNumberrMapList[k][tempSiteId][l]['availabilty'],
-                                        'Performance': data.siteAndAssetNumberrMapList[k][tempSiteId][l]['performance'],
-                                        'Quality Rate': data.siteAndAssetNumberrMapList[k][tempSiteId][l]['qualityrate'],
-                                        'OEE': data.siteAndAssetNumberrMapList[k][tempSiteId][l]['oeePercentage'],
+                                        'Availability': tempMachineData['Availability'] > 100 ? 100 : tempMachineData['Availability'],
+                                        'Performance': tempMachineData['Performance'] > 100 ? 100 : tempMachineData['Performance'] ,
+                                        'Quality Rate': tempMachineData['Quality Rate'] > 100 ? 100 :tempMachineData['Quality Rate'] ,
+                                        'OEE': tempMachineData['OEE'] > 100 ? 100 : tempMachineData['OEE'] ,
                                         'Target': data.siteAndAssetNumberrMapList[k][tempSiteId][l]['target'] ? data.siteAndAssetNumberrMapList[k][tempSiteId][l]['target'] : '-',
                                         'Actual': data.siteAndAssetNumberrMapList[k][tempSiteId][l]['actual'] ? data.siteAndAssetNumberrMapList[k][tempSiteId][l]['actual'] : '-',
                                         'Delinquency': data.siteAndAssetNumberrMapList[k][tempSiteId][l]['delinquency'] ? data.siteAndAssetNumberrMapList[k][tempSiteId][l]['delinquency'] : '-'
                                     });
+                                    tempMachineData = temp.children[temp.children.length - 1].children.slice(-1)[0];
+                                    machine['Availability'] += tempMachineData['Availability'];
+                                    machine['Performance'] += tempMachineData['Performance'];
+                                    machine['Quality Rate'] += tempMachineData['Quality Rate'];
+                                    machine['OEE'] += tempMachineData['OEE'];
                                     if (data.siteAndAssetNumberrMapList[k][tempSiteId][l]['partNumberList'].length) {
-                                        //temp.children[temp.children.length - 1].children[temp.children[temp.children.length - 1].children.length - 1].children = [];
                                         temp.children[temp.children.length - 1].children[temp.children[temp.children.length - 1].children.length - 1].children = [];
-                                        //console.log(temp.children[temp.children.length - 1].children.children);
-                                        var parts = {
-                                            'Availability': 0,
-                                            'Performance': 0,
-                                            'Quality Rate': 0,
-                                            'OEE': 0,
-                                            'Target': 0,
-                                            'Actual': 0,
-                                            'Delinquency': 0
-                                        }
-                                        //console.log(data.siteAndAssetNumberrMapList[k][tempSiteId][l]['partNumberList'].length);
                                         for (var m = 0; m < data.siteAndAssetNumberrMapList[k][tempSiteId][l]['partNumberList'].length; m++) {
                                             // parts
                                             temp.children[temp.children.length - 1].children[temp.children[temp.children.length - 1].children.length - 1].children.push({
@@ -157,25 +153,24 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
                                                 'Actual': data.siteAndAssetNumberrMapList[k][tempSiteId][l]['partNumberList'][m]['actual'] ? data.siteAndAssetNumberrMapList[k][tempSiteId][l]['partNumberList'][m]['actual'] : '-',
                                                 'Delinquency': data.siteAndAssetNumberrMapList[k][tempSiteId][l]['partNumberList'][m]['delinquency'] ? data.siteAndAssetNumberrMapList[k][tempSiteId][l]['partNumberList'][m]['delinquency'] : '-'
                                             });
-                                            parts['Availability'] += data.siteAndAssetNumberrMapList[k][tempSiteId][l]['partNumberList'][m]['availabilty'];
-                                            parts['Performance'] += data.siteAndAssetNumberrMapList[k][tempSiteId][l]['partNumberList'][m]['performance'];
-                                            parts['Quality Rate'] += data.siteAndAssetNumberrMapList[k][tempSiteId][l]['partNumberList'][m]['qualityrate'];
-                                            parts['OEE'] += data.siteAndAssetNumberrMapList[k][tempSiteId][l]['partNumberList'][m]['oeePercentage'];
                                         }
-                                        // temp.children[temp.children.length - 1].children.children[temp.children[temp.children.length - 1].children.children.length-1]['Availability'] = parts['Availability'];
-                                        // temp.children[temp.children.length - 1].children.children[temp.children[temp.children.length - 1].children.children.length-1]['Performance'] = parts['Performance'];
-                                        // temp.children[temp.children.length - 1].children.children[temp.children[temp.children.length - 1].children.children.length-1]['Quality Rate'] = parts['Quality Rate'];
-                                        // temp.children[temp.children.length - 1].children.children[temp.children[temp.children.length - 1].children.children.length-1]['OEE'] = parts['OEE'];
                                     }
-                                    /*machine['Availability'] += data.siteAndAssetNumberrMapList[k][tempSiteId][l]['availabilty'];
-                                    machine['Performance'] += data.siteAndAssetNumberrMapList[k][tempSiteId][l]['performance'];
-                                    machine['Quality Rate'] += data.siteAndAssetNumberrMapList[k][tempSiteId][l]['qualityrate'];
-                                    machine['OEE'] += data.siteAndAssetNumberrMapList[k][tempSiteId][l]['oeePercentage'];*/
                                 }
-                                //	console.log(temp.children[temp.children.length - 1]);
+                                machine['Availability'] = machine['Availability']/data.siteAndAssetNumberrMapList[k][tempSiteId].length;
+                                machine['Performance'] = machine['Performance']/data.siteAndAssetNumberrMapList[k][tempSiteId].length;
+                                machine['Quality Rate'] = machine['Quality Rate']/data.siteAndAssetNumberrMapList[k][tempSiteId].length;
+                                machine['OEE'] = machine['OEE']/data.siteAndAssetNumberrMapList[k][tempSiteId].length;
+                                temp.children[temp.children.length - 1]['Availability'] = machine['Availability'];
+                                temp.children[temp.children.length - 1]['Performance'] = machine['Performance'];
+                                temp.children[temp.children.length - 1]['Quality Rate'] = machine['Quality Rate'];
+                                temp.children[temp.children.length - 1]['OEE'] = machine['OEE'];
                             }
                         }
                     }
+                    temp['Availability'] = temp.children[0]['Availability'];
+                    temp['Performance'] = temp.children[0]['Performance'];
+                    temp['Quality Rate'] = temp.children[0]['Quality Rate'];
+                    temp['OEE'] = temp.children[0]['OEE'];
                 }
                 tempJson.push(temp);
             }
@@ -219,12 +214,7 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
         $scope.applyFilter = function() {
             $scope.oeeAllValueStreamsObj.filter.applyButton = true;
             $scope.oeeAllValueStreamsObj.filter.resetButton = true;
-            if ($scope.oeeAllValueStreamsObj.filter.viewOptionConstrain[0]['isChecked']) {
-
-            }
-            if ($scope.oeeAllValueStreamsObj.filter.viewOptionConstrain[0]['isChecked']) {
-
-            }
+            update($scope.oeeAllValueStreamsObj.filter.viewOptionConstrain);
         }
 
         $scope.resetFilter = function() {
@@ -235,14 +225,48 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
                 name: 'Throughput',
                 isChecked: true
             }];
+            update($scope.oeeAllValueStreamsObj.filter.viewOptionConstrain);
             $scope.oeeAllValueStreamsObj.filter.applyButton = true;
             $scope.oeeAllValueStreamsObj.filter.resetButton = true;
         }
 
         // enable apply & reset button
-        $scope.update = function(item) {
+        $scope.toogleResetButton = function (item) {
             $scope.oeeAllValueStreamsObj.filter.applyButton = false;
             $scope.oeeAllValueStreamsObj.filter.resetButton = false;
+        }
+        
+        // show hide column
+        function update(item) {
+            if( item[0].isChecked ){
+                angular.element('.vs-table tr:first-child th:nth-child(2)').show();
+                angular.element('.vs-table tr td:nth-child(2), .vs-table tr:last-child th:nth-child(2)').show();
+                angular.element('.vs-table tr td:nth-child(3), .vs-table tr:last-child th:nth-child(3)').show();
+                angular.element('.vs-table tr td:nth-child(4), .vs-table tr:last-child th:nth-child(4)').show();
+                angular.element('.vs-table tr td:nth-child(5), .vs-table tr:last-child th:nth-child(5)').show();
+            } else {
+                angular.element('.vs-table tr:first-child th:nth-child(2)').hide();
+                angular.element('.vs-table tr td:nth-child(2), .vs-table tr:last-child th:nth-child(2)').hide();
+                angular.element('.vs-table tr td:nth-child(3), .vs-table tr:last-child th:nth-child(3)').hide();
+                angular.element('.vs-table tr td:nth-child(4), .vs-table tr:last-child th:nth-child(4)').hide();
+                angular.element('.vs-table tr td:nth-child(5), .vs-table tr:last-child th:nth-child(5)').hide();
+            }
+
+            if( item[1].isChecked) {
+                angular.element('.vs-table tr:first-child th:nth-child(3)').show();
+                angular.element('.vs-table tr td:nth-child(6), .vs-table tr:last-child th:nth-child(6)').show();
+                angular.element('.vs-table tr td:nth-child(7), .vs-table tr:last-child th:nth-child(7)').show();
+                angular.element('.vs-table tr td:nth-child(8), .vs-table tr:last-child th:nth-child(8)').show();
+            } else {
+                angular.element('.vs-table tr:first-child th:nth-child(3)').hide();
+                angular.element('.vs-table tr td:nth-child(6), .vs-table tr:last-child th:nth-child(6)').hide();
+                angular.element('.vs-table tr td:nth-child(7), .vs-table tr:last-child th:nth-child(7)').hide();
+                angular.element('.vs-table tr td:nth-child(8), .vs-table tr:last-child th:nth-child(8)').hide();
+            }
+        }
+
+        function sortOrder () {
+
         }
 
         $scope.tableHandler = function(branch) {

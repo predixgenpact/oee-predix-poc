@@ -26,7 +26,15 @@
                     "       </td>\n" +
                     "       <td ng-repeat=\"col in colDefinitions\">\n" +
                     "         <div ng-if=\"col.cellTemplate\" compile=\"col.cellTemplate\" cell-template-scope=\"col.cellTemplateScope\"></div>\n" +
-                    "         <div ng-if=\"!col.cellTemplate\">{{row.branch[col.field]}}</div>\n" +
+                    "         <div ng-if=\"!col.cellTemplate\">\n"+
+                    "           <span ng-if=\"col.field === 'Availability' || col.field === 'Performance' || col.field === 'Quality Rate' || col.field === 'OEE'\" \n"+
+                    "                  ng-class=\" row.branch[col.field] >= 75 ? 'health-good' : (row.branch[col.field] >= 50 && row.branch[col.field] < 75 ? 'health-normal' : 'health-poor')\" >\n"+
+                    "               {{row.branch[col.field]}}%\n"+
+                    "           </span>\n"+
+                    "           <span ng-if=\"col.field === 'Target' || col.field === 'Actual' || col.field === 'Delinquency'\">\n"+
+                    "               {{row.branch[col.field]}}\n"+
+                    "           </span>\n"+
+                    "          </div>\n" +
                     "       </td>\n" +
                     "     </tr>\n" +
                     "   </tbody>\n" +
