@@ -297,14 +297,30 @@ footer ul li span {
     text-align: left !important;
     padding: 8px 15px;
 }
-
-.vs-table .table>tbody tr:nth-child(even) {
+.even-row-color {
+    background-color: #F8F9F9;
+}
+.odd-row-color {
     background-color: #EDF6F7;
 }
 
-.vs-table .table>tbody tr:nth-child(odd) {
-    background-color: #F8F9F9;
+.vs-table .table>tbody tr.level-1 td{
+    font-size: 16px !important; 
+    font-weight: 600 !important; 
 }
+
+.vs-table .table>tbody tr.level-2 td{
+    font-size: 15px !important; 
+}
+
+.vs-table .table>tbody tr.level-3 td{
+    font-size: 14px !important; 
+}
+
+.vs-table .table>tbody tr.level-4 td{
+    font-size: 13px !important; 
+}
+
 
 .view-options [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
     position: relative !important;
@@ -327,7 +343,6 @@ footer ul li span {
 .level-4>td:first-child{
     padding-left: 4rem !important; 
 }
-
 .vs-filter-sort-by {
     display: block;
     width: 50%;
