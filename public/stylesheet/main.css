@@ -399,3 +399,18 @@ footer ul li span {
     padding-right: 25px;
     margin-top: 90px;
 }
+
+.collapsible-body{
+    background-color:#F8F8F8;
+}
+
+.collapsible-header{
+    font-size:1.1em;
+    font-weight:500;
+    color:#4c81c2;
+}
+
+.collapsible{
+    margin-top: 10%;
+    margin-right: 2em;
+}

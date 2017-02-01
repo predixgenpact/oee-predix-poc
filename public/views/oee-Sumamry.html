@@ -1,28 +1,56 @@
+   <script src="js/materialize.js"></script>
+   <script type="text/javascript" src="js/materialize.min.js"></script>
 <!-- Filter Content -->
-<div class="row vs-filter" data-ng-style="oeeAllValueStreamsObj.filter.style">
+<div class="row vs-filter" data-ng-style="oeeSummary.filter.style">
     <div class="col s12 m12 l12">
-        <div class="col s3 m4 l5">
-            <select class="right vs-filter-sort-by" data-ng-model="oeeAllValueStreamsObj.filter.selectedOptions" data-ng-change="update()" data-ng-options="item for item in oeeAllValueStreamsObj.filter.sortByOptions" style="background-color: lightgrey;border-radius: 5px">
-                <option style="display:none" value="">Site Code</option>
+    <div class="col l2">
+    </div>
+        <div class="col s12 m4 l3">
+            <select class="right vs-filter-sort-by" data-ng-model="oeeSummary.filter.selectedSiteCode" data-ng-change="update()" data-ng-options="item for item in oeeSummary.filter.SiteCodeOptions" style="border: 1px solid;background-color:lightgrey;border-radius: 5px">
+                <option style="display:none;background-color: white" value="">Site Code</option>
             </select>
         </div>
-        <div class="col s3 m4 l5">
-            <select class="right vs-filter-sort-by" data-ng-model="oeeAllValueStreamsObj.filter.selectedOptions" data-ng-change="update()" data-ng-options="item for item in oeeAllValueStreamsObj.filter.sortByOptions" style="background-color: lightgrey;border-radius: 5px">
-                <option style="display:none" value="">Machine Group</option>
+        <div class="col s12 m4 l3" style="margin-left: -10%">
+            <select class="right vs-filter-sort-by" data-ng-model="oeeSummary.filter.selectedMachineGroup" data-ng-change="update()" data-ng-options="item for item in oeeSummary.filter.MachineGroupOptions" style="border: 1px solid;background-color:lightgrey;border-radius: 5px">
+                <option style="display:none;background-color: white" value="">Machine Group</option>
             </select>
         </div>
-     
+        <div class="col s12 m3 l2" id="Btn" style="margin-left:1%;margin-top: 0.7%">
+            <button id="Applybtn" class="btn btn--primary" type="button" data-ng-disabled="oeeDashboardObj.disableResetFilterBtn" data-ng-click="applyFilter();" style="width:150px;height:35px">Apply</button>
+        </div>
+       <div class="col l2">
+    </div>
     </div>
 </div>
 <!-- Filter Icon -->
-<div class="row vs-filter-icon" data-ng-style="oeeAllValueStreamsObj.filterIcon.style">
+<div class="row vs-filter-icon" data-ng-style="oeeSummary.filterIcon.style">
     <a href="javascript:void(0)" data-ng-click="toogleFilter()">
-        <i class="fa fa-filter" data-ng-hide="oeeAllValueStreamsObj.filter.show" aria-hidden="true"></i>
-        <i class="fa fa-times-circle" data-ng-show="oeeAllValueStreamsObj.filter.show" aria-hidden="true"></i> &nbsp;
+        <i class="fa fa-filter" data-ng-hide="oeeSummary.filter.show" aria-hidden="true"></i>
+        <i class="fa fa-times-circle" data-ng-show="oeeSummary.filter.show" aria-hidden="true"></i> &nbsp;
         <span data-ng-bind="oeeDashboardObj.filter.show ? 'Close' : 'Filters'"></span>
     </a>
 </div>
 
-<div class="s12 m12 l12" id="Table">
-<img src="../images/Table.png" width="100%" >
-</div>
+
+ <ul class="collapsible popout" data-collapsible="accordion" style="margin-top: 10%;margin-right: 2em">
+    <li>
+      <div class="collapsible-header active">OEE by Fiscal Week</div>
+      <div class="collapsible-body" ><div id="container"></div></div>
+    </li>
+    <li>
+      <div class="collapsible-header">Availability by Fiscal Week</div>
+      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+    </li>
+    <li>
+      <div class="collapsible-header">Performance by Fiscal Week</div>
+      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+    </li>
+    <li>
+      <div class="collapsible-header">Quality Rate by Fiscal Week</div>
+      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+    </li>
+    <li>
+      <div class="collapsible-header">Machine Downtime</div>
+      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+    </li>
+  </ul>
