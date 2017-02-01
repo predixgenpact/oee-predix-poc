@@ -464,5 +464,37 @@ footer ul li span {
 }
 
 .collapsible{
-    margin-top: 10%;
-    margin-right: 2em;
+    margin-top: 2rem !important;
+    margin-right: 2rem !important;
+}
+
+.oee-summary-table {
+    margin-top: 90px;
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+    margin-bottom: 0 !important;  
+}
+.oee-summary-table table.summary-table thead tr{
+    background-color: #4C81C2 !important;
+    color: white;
+}
+.summary-table thead th {
+    padding: 10px 15px !important;
+}
+.summary-table thead th, .summary-table tbody td {
+    border-radius: 0px !important;
+    text-align: center;
+    font-weight: 600;
+    border-right: 1px solid #ddd !important;
+}
+.summary-table th:last-child, .summary-table td:last-child {
+    border-right: 0 !important;
+} 
+
+.summary-table tbody tr:nth-child(odd) {
+    background-color: #EDF6F7;
+}
+
+.summary-table tbody tr:nth-child(even) {
+    background-color: #F8F9F9;
+}

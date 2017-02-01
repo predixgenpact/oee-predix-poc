@@ -38,9 +38,8 @@ define(['angular', 'angular-ui-router'], function(angular) {
                 //parent: 'secure',
                 url: '/oeeSummary', 
                 templateUrl: 'views/oee-Sumamry.html',
-                controller: 'oeeSummaryCtrl'
+                controller: 'OeeSummaryCtrl'
             })
-
             .state('valueStreams', {
                 //parent: 'secure',
                 url: '/valueStreams',

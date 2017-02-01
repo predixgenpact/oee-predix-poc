@@ -1,5 +1,5 @@
-   <script src="js/materialize.js"></script>
-   <script type="text/javascript" src="js/materialize.min.js"></script>
+<script src="js/materialize.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
 <!-- Filter Content -->
 <div class="row vs-filter" data-ng-style="oeeSummary.filter.style">
     <div class="col s12 m12 l12">
@@ -31,26 +31,103 @@
     </a>
 </div>
 
+<!--- OEE Summary Table -->
+<div class="row oee-summary-table">
+    <div class="col s12 m12 l12">   
+        <table class="summary-table"> 
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Availability</th>
+                    <th>Performance</th>
+                    <th>Quality Rate</th>
+                    <th>OEE</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="rowData in oeeSummaryTable">
+                    <td><span>{{rowData.week}}</span></td>
+                    <td>
+                        <span data-ng-class="rowData.availabilty >= 75 ? 'health-good' : (rowData.availabilty >= 50 && rowData.availabilty < 75 ? 'health-normal' : 'health-poor')">
+                        {{rowData.availabilty}}%
+                        </span>
+                    </td>
+                    <td>
+                        <span data-ng-class="rowData.performance >= 75 ? 'health-good' : (rowData.performance >= 50 && rowData.performance < 75 ? 'health-normal' : 'health-poor')">
+                            {{rowData.performance}}%
+                        </span>
+                    </td>
+                    <td>
+                        <span data-ng-class="rowData.qualityrate >= 75 ? 'health-good' : (rowData.qualityrate >= 50 && rowData.qualityrate < 75 ? 'health-normal' : 'health-poor')">
+                            {{rowData.qualityrate}}%
+                        </span>
+                    </td>
+                    <td>
+                        <span data-ng-class="rowData.oeePercentage >= 75 ? 'health-good' : (rowData.oeePercentage >= 50 && rowData.oeePercentage < 75 ? 'health-normal' : 'health-poor')">
+                        {{rowData.oeePercentage}}%
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
- <ul class="collapsible popout" data-collapsible="accordion" style="margin-top: 10%;margin-right: 2em">
-    <li>
-      <div class="collapsible-header active">OEE by Fiscal Week</div>
-      <div class="collapsible-body" ><div id="container"></div></div>
-    </li>
-    <li>
-      <div class="collapsible-header">Availability by Fiscal Week</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-    <li>
-      <div class="collapsible-header">Performance by Fiscal Week</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-    <li>
-      <div class="collapsible-header">Quality Rate by Fiscal Week</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-    <li>
-      <div class="collapsible-header">Machine Downtime</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-  </ul>
+
+
+<!-- Collapsible Cards -->
+ <div class="row">
+     <div class="col s12 m12 l12">
+         <ul class="collapsible popout" data-collapsible="accordion">
+            <li>
+                <div class="collapsible-header active">OEE by Fiscal Week</div>
+                <div class="collapsible-body" ><div id="container"></div></div>
+            </li>
+            <li>
+                <div class="collapsible-header">Availability by Fiscal Week</div>
+                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+            </li>
+            <li>
+                <div class="collapsible-header">Performance by Fiscal Week</div>
+                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+            </li>
+            <li>
+                <div class="collapsible-header">Quality Rate by Fiscal Week</div>
+                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+            </li>
+            <li>
+                <div class="collapsible-header">Machine Downtime</div>
+                <div class="collapsible-body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Fiscal Week</th>
+                                <th>Asset Number</th>
+                                <th>Down Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat="rowData in dataforpage.machineDownTimeList">
+                                <td>{{rowData.fiscalWeek}}</td>
+                                <td>{{rowData.assetNum}}</td>
+                                <td>{{rowData.downTime}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </li>
+        </ul>
+     </div>
+ </div>
+
+
+
+<!-- Back and Next Button -->
+<a ui-sref="valueStreams" class="back-btn btn--primary">
+    <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+    <span>OEE All Value Stream</span>
+</a>
+<!--<a ui-sref="oeeSummary" class="next-btn btn--primary">
+    <span>OEE Summary</span>
+    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+</a>-->
