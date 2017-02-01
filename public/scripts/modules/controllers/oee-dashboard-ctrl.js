@@ -8,6 +8,7 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
 
 
     function OeeDashboardCtrl($scope, $timeout, $window, OeeSupplyChainService) {
+        angular.element(".page-loading").addClass("hidden");
 
         $scope.oeeDashboardObj = {
             filter: {

@@ -46,16 +46,17 @@ define(['angular'], function(angular) {
         };
     }]);
 
-    // Show page loader on view/route changed
+    // Show page loader(spinner) on view/route changed
     module.run(function($rootScope){
         $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){ 
-            $("#ui-view").html("");
-            $(".page-loading").removeClass("hidden");
+             angular.element("#ui-view").html("");
+            // angular.element("#ui-view").hide();
+             angular.element(".page-loading").removeClass("hidden");
         });
 
-        $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){ 
-            $(".page-loading").addClass("hidden");
-        });
+        // $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){ 
+        //      angular.element(".page-loading").addClass("hidden");
+        // });
     });
 
     return module;
