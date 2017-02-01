@@ -69,8 +69,8 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
                 $timeout(function() {
                     angular.element('.vs-table table thead').prepend('<tr> <th></th>\
                 <th colspan="4"> Overall Equipment Effectiveness</th> <th colspan="3"> Throughput</th></tr>');
-                    $scope.setRowColor();
-                }, 100);
+                    setRowColor();
+                }, 10);
             }, function(error) {
                 console.log('Failed to fetch data');
             });
@@ -274,7 +274,7 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
         }
 
         // set table row color
-        $scope.setRowColor = function(branch) {
+         function setRowColor (branch) {
             angular.element('.level-1').filter(':even').addClass("even-row-color");
             angular.element('.level-1').filter(':odd').addClass('odd-row-color');
         }
