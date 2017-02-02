@@ -8,8 +8,10 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
 
     function oeeSummaryCtrl($scope, $timeout, $window, OeeSupplyChainService) {
         angular.element("#ui-view").hide();
+
+
         $scope.oeeSummary = {
-            filter: {
+            filter: {                
                 style: {
                     height: '5px',
                     overflow: 'hidden',
@@ -17,9 +19,9 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
                 applyButton: true,
                 resetButton: true,
                 show: false,
+                selectedSiteCode: sessionStorage.getItem("SelectedSiteCode") ? sessionStorage.getItem("SelectedSiteCode") : 'GNV',
                 SiteCodeOptions: ['GNV', 'AUB', 'WIL'],
-                selectedSiteCode: sessionStorage.getItem("SelectedSiteCode"),
-                MachineGroupOptions: ['GENx EDM - OP50','Group_2', 'Group_1', 'Group_4', 'GE90 Grind', 'Group_6', 'Group_3', 'M96 Grind', 'M91 Grind', 'Group_5', 'au-magerle002', 'Group_1'],
+                MachineGroupOptions: ['GENx EDM - OP50', 'Group_2', 'Group_1', 'Group_4', 'GE90 Grind', 'Group_6', 'Group_3', 'M96 Grind', 'M91 Grind', 'Group_5', 'au-magerle002', 'Group_1'],
                 selectedMachineGroup: 'au-magerle002',
                 viewOptionConstrain: [{
                     name: 'Constrain Only',
@@ -46,22 +48,22 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
                 showThroughputCol: true
             }
         }
-        $scope.oeeSummary.filter.MachineGroupOptions = $scope.oeeSummary.filter.selectedSiteCode == 'GNV' ? ['GENx EDM - OP50','Group_2', 'Group_1', 'Group_4', 'GE90 Grind', 'Group_6', 'Group_3', 'M96 Grind', 'M91 Grind', 'Group_5'] : $scope.oeeSummary.filter.selectedSiteCode == 'AUB' ? ['au-magerle002'] : $scope.oeeSummary.filter.selectedSiteCode == 'WIL' ? ['Group_1'] : ['GENx EDM - OP50','Group_2', 'Group_1', 'Group_4', 'GE90 Grind', 'Group_6', 'Group_3', 'M96 Grind', 'M91 Grind', 'Group_5', 'au-magerle002', 'Group_1'];
+        $scope.oeeSummary.filter.MachineGroupOptions = $scope.oeeSummary.filter.selectedSiteCode == 'GNV' ? ['GENx EDM - OP50', 'Group_2', 'Group_1', 'Group_4', 'GE90 Grind', 'Group_6', 'Group_3', 'M96 Grind', 'M91 Grind', 'Group_5'] : $scope.oeeSummary.filter.selectedSiteCode == 'AUB' ? ['au-magerle002'] : $scope.oeeSummary.filter.selectedSiteCode == 'WIL' ? ['Group_1'] : ['GENx EDM - OP50', 'Group_2', 'Group_1', 'Group_4', 'GE90 Grind', 'Group_6', 'Group_3', 'M96 Grind', 'M91 Grind', 'Group_5', 'au-magerle002', 'Group_1'];
         $scope.oeeSummary.filter.selectedMachineGroup = $scope.oeeSummary.filter.MachineGroupOptions[0];
         $scope.dataforpage;
-        $scope.StartWeek=1;
-        $scope.EndWeek=52;
+        $scope.StartWeek = 1;
+        $scope.EndWeek = 52;
 
-        $scope.ChangedStartWeek=function(){            
+        $scope.ChangedStartWeek = function() {
             document.getElementById("ApplyWeekbtn").disabled = false;
         }
 
-        $scope.ChangedEndWeek=function(){            
+        $scope.ChangedEndWeek = function() {
             document.getElementById("ApplyWeekbtn").disabled = false;
         }
 
         //Changing Week
-        $scope.applyWeek=function(){
+        $scope.applyWeek = function() {
             $scope.plotOEEbyFiscalWeek($scope.dataforpage.fiscalWeekOeeList);
             $scope.plotAvailabilitybyFiscalWeek($scope.dataforpage.fiscalWeekAvailabilityList);
             $scope.plotPerformancebyFiscalWeek($scope.dataforpage.fiscalWeekPerformanceList);
@@ -72,17 +74,17 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
         //For Dependent dropdowns
         $scope.update = function() {
             document.getElementById("Applybtn").disabled = false;
-            $scope.oeeSummary.filter.MachineGroupOptions = $scope.oeeSummary.filter.selectedSiteCode == 'GNV' ? ['GENx EDM - OP50','Group_2', 'Group_1', 'Group_4', 'GE90 Grind', 'Group_6', 'Group_3', 'M96 Grind', 'M91 Grind', 'Group_5'] : $scope.oeeSummary.filter.selectedSiteCode == 'AUB' ? ['au-magerle002'] : $scope.oeeSummary.filter.selectedSiteCode == 'WIL' ? ['Group_1'] : ['GENx EDM - OP50','Group_2', 'Group_1', 'Group_4', 'GE90 Grind', 'Group_6', 'Group_3', 'M96 Grind', 'M91 Grind', 'Group_5', 'au-magerle002', 'Group_1'];
+            $scope.oeeSummary.filter.MachineGroupOptions = $scope.oeeSummary.filter.selectedSiteCode == 'GNV' ? ['GENx EDM - OP50', 'Group_2', 'Group_1', 'Group_4', 'GE90 Grind', 'Group_6', 'Group_3', 'M96 Grind', 'M91 Grind', 'Group_5'] : $scope.oeeSummary.filter.selectedSiteCode == 'AUB' ? ['au-magerle002'] : $scope.oeeSummary.filter.selectedSiteCode == 'WIL' ? ['Group_1'] : ['GENx EDM - OP50', 'Group_2', 'Group_1', 'Group_4', 'GE90 Grind', 'Group_6', 'Group_3', 'M96 Grind', 'M91 Grind', 'Group_5', 'au-magerle002', 'Group_1'];
             $scope.oeeSummary.filter.selectedMachineGroup = $scope.oeeSummary.filter.MachineGroupOptions[0];
         }
 
-         //For Dependent dropdowns
+        //For Dependent dropdowns
         $scope.update1 = function() {
             document.getElementById("Applybtn").disabled = false;
         }
 
         // show/hide filter
-        $scope.toogleFilter = function() { 
+        $scope.toogleFilter = function() {
             $scope.oeeSummary.filter.show = !$scope.oeeSummary.filter.show;
             $scope.oeeSummary.table.showThroughputCol = !$scope.oeeSummary.table.showThroughputCol;
             $scope.oeeSummary.table.showOeeCol = !$scope.oeeSummary.table.showOeeCol;
@@ -126,10 +128,6 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
             }
         });
 
-        Highcharts.theme = {
-   colors: ['#8e4fc8', '#38CBFF','#5B91FF', '#4A7CDE', '#6C5EBF', '#4AA9DE', '#F89C1C',
-      '#55BF3B', '#DF5353', '#7798BF', '#aaeeee']
-  }
         //Function to run on Apply Filter Call
         $scope.applyFilter = function() {
             document.getElementById("Applybtn").disabled = true;
@@ -160,12 +158,12 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
         $scope.plotOEEbyFiscalWeek = function(val) {
             var datatoplotchart = [];
             angular.forEach(val, function(value, key) {
-                if(value.fiscalWeek>=$scope.StartWeek && value.fiscalWeek<=$scope.EndWeek){
-                datatoplotchart.push({
-                    'x': value.fiscalWeek,
-                    'y': value.oeeValue
-                })
-            }
+                if (value.fiscalWeek >= $scope.StartWeek && value.fiscalWeek <= $scope.EndWeek) {
+                    datatoplotchart.push({
+                        'x': value.fiscalWeek,
+                        'y': value.oeeValue
+                    })
+                }
             })
             $scope.chart1 = new Highcharts.Chart({
                 rangeSelector: {
@@ -180,9 +178,9 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
                         style: {
                             fontSize: '13px'
                         },
-                        formatter: function () {
-                    return this.axis.defaultLabelFormatter.call(this) + "%";
-                }      
+                        formatter: function() {
+                            return this.axis.defaultLabelFormatter.call(this) + "%";
+                        }
                     },
                     min: 0,
                     title: {
@@ -194,17 +192,17 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
                         return '<b>' + 'Week : ' + this.x + '<br />OEE : ' + Highcharts.numberFormat(this.y, 2) + "%";
                     }
                 },
-               plotOptions: {
-            series: {
-                fillColor: {
-                    linearGradient: [0, 0, 0, 300],
-                    stops: [
-                        [0, Highcharts.getOptions().colors[0]],
-                        [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
-                    ]
-                }
-            }
-        },
+                plotOptions: {
+                    series: {
+                        fillColor: {
+                            linearGradient: [0, 0, 0, 300],
+                            stops: [
+                                [0, Highcharts.getOptions().colors[0]],
+                                [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                            ]
+                        }
+                    }
+                },
                 xAxis: {
                     labels: {
                         style: {
@@ -242,12 +240,12 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
             var datatoplotchart = [];
             angular.forEach(val, function(value, key) {
 
-                if(value.fiscalWeek>=$scope.StartWeek && value.fiscalWeek<=$scope.EndWeek){
-                datatoplotchart.push({
-                    'x': value.fiscalWeek,
-                    'y': value.availabilty
-                })
-            }
+                if (value.fiscalWeek >= $scope.StartWeek && value.fiscalWeek <= $scope.EndWeek) {
+                    datatoplotchart.push({
+                        'x': value.fiscalWeek,
+                        'y': value.availabilty
+                    })
+                }
             })
             $scope.chart1 = new Highcharts.Chart({
                 rangeSelector: {
@@ -262,12 +260,12 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
                         style: {
                             fontSize: '13px'
                         },
-                             formatter: function () {
-                    return this.axis.defaultLabelFormatter.call(this) + "%";
-                }  
+                        formatter: function() {
+                            return this.axis.defaultLabelFormatter.call(this) + "%";
+                        }
                     },
                     min: 0,
-                    max:100,
+                    max: 100,
                     title: {
                         text: 'Availability'
                     }
@@ -278,16 +276,16 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
                     }
                 },
                 plotOptions: {
-            series: {
-                fillColor: {
-                    linearGradient: [0, 0, 0, 300],
-                    stops: [
-                        [0, Highcharts.getOptions().colors[0]],
-                        [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
-                    ]
-                }
-            }
-        },
+                    series: {
+                        fillColor: {
+                            linearGradient: [0, 0, 0, 300],
+                            stops: [
+                                [0, Highcharts.getOptions().colors[0]],
+                                [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                            ]
+                        }
+                    }
+                },
                 xAxis: {
                     labels: {
                         style: {
@@ -325,12 +323,12 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
         $scope.plotPerformancebyFiscalWeek = function(val) {
             var datatoplotchart = [];
             angular.forEach(val, function(value, key) {
-                if(value.fiscalWeek>=$scope.StartWeek && value.fiscalWeek<=$scope.EndWeek){
-                datatoplotchart.push({
-                    'x': value.fiscalWeek,
-                    'y': value.performance
-                })
-            }
+                if (value.fiscalWeek >= $scope.StartWeek && value.fiscalWeek <= $scope.EndWeek) {
+                    datatoplotchart.push({
+                        'x': value.fiscalWeek,
+                        'y': value.performance
+                    })
+                }
             })
             $scope.chart1 = new Highcharts.Chart({
                 rangeSelector: {
@@ -345,9 +343,9 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
                         style: {
                             fontSize: '13px'
                         },
-                             formatter: function () {
-                    return this.axis.defaultLabelFormatter.call(this) + "%";
-                }  
+                        formatter: function() {
+                            return this.axis.defaultLabelFormatter.call(this) + "%";
+                        }
                     },
                     min: 0,
                     title: {
@@ -360,16 +358,16 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
                     }
                 },
                 plotOptions: {
-            series: {
-                fillColor: {
-                    linearGradient: [0, 0, 0, 300],
-                    stops: [
-                        [0, Highcharts.getOptions().colors[0]],
-                        [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
-                    ]
-                }
-            }
-        },
+                    series: {
+                        fillColor: {
+                            linearGradient: [0, 0, 0, 300],
+                            stops: [
+                                [0, Highcharts.getOptions().colors[0]],
+                                [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                            ]
+                        }
+                    }
+                },
                 xAxis: {
                     labels: {
                         style: {
@@ -407,12 +405,12 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
         $scope.plotQualityRatebyFiscalWeek = function(val) {
             var datatoplotchart = [];
             angular.forEach(val, function(value, key) {
-                if(value.fiscalWeek>=$scope.StartWeek && value.fiscalWeek<=$scope.EndWeek){
-                datatoplotchart.push({
-                    'x': value.fiscalWeek,
-                    'y': value.qualityRate
-                })
-            }
+                if (value.fiscalWeek >= $scope.StartWeek && value.fiscalWeek <= $scope.EndWeek) {
+                    datatoplotchart.push({
+                        'x': value.fiscalWeek,
+                        'y': value.qualityRate
+                    })
+                }
             })
             $scope.chart1 = new Highcharts.Chart({
                 rangeSelector: {
@@ -427,12 +425,12 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
                         style: {
                             fontSize: '13px'
                         },
-                             formatter: function () {
-                    return this.axis.defaultLabelFormatter.call(this) + "%";
-                }  
+                        formatter: function() {
+                            return this.axis.defaultLabelFormatter.call(this) + "%";
+                        }
                     },
                     min: 0,
-                    max:100,
+                    max: 100,
                     title: {
                         text: 'Quality Rate'
                     }
@@ -443,16 +441,16 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
                     }
                 },
                 plotOptions: {
-            series: {
-                fillColor: {
-                    linearGradient: [0, 0, 0, 300],
-                    stops: [
-                        [0, Highcharts.getOptions().colors[0]],
-                        [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
-                    ]
-                }
-            }
-        },
+                    series: {
+                        fillColor: {
+                            linearGradient: [0, 0, 0, 300],
+                            stops: [
+                                [0, Highcharts.getOptions().colors[0]],
+                                [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                            ]
+                        }
+                    }
+                },
                 xAxis: {
                     labels: {
                         style: {
@@ -485,29 +483,30 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
         }
         $scope.getdata();
 
-        function oeeSummaryTable () {
+        function oeeSummaryTable() {
             var tempData = $scope.dataforpage.eachPartYearlyData;
             $scope.oeeSummaryTable = [{
-                        'week': 'Last Week',
-                        'availabilty': (tempData.lastWeeksAvailability),
-                        'performance': (tempData.lastWeeksPerformance),
-                        'qualityrate': (tempData.lastWeeksQualityRate),
-                        'oeePercentage': (tempData.lastWeeksOee)
-                    },
-                    {
-                        'week': 'Last 4 Weeks',
-                        'availabilty': (tempData.last4WeeksAvailability),
-                        'performance': (tempData.last4WeeksPerformance),
-                        'qualityrate': (tempData.last4WeeksQualityRate),
-                        'oeePercentage': (tempData.last4WeeksOee)
-                    },
-                    {
-                        'week': 'YTD',
-                        'availabilty': (tempData.yearAvailability),
-                        'performance': (tempData.yearPerformance),
-                        'qualityrate': (tempData.yearQualityRate),
-                        'oeePercentage': (tempData.yearOee) 
-                    }];  
+                    'week': 'Last Week',
+                    'availabilty': (tempData.lastWeeksAvailability),
+                    'performance': (tempData.lastWeeksPerformance),
+                    'qualityrate': (tempData.lastWeeksQualityRate),
+                    'oeePercentage': (tempData.lastWeeksOee)
+                },
+                {
+                    'week': 'Last 4 Weeks',
+                    'availabilty': (tempData.last4WeeksAvailability),
+                    'performance': (tempData.last4WeeksPerformance),
+                    'qualityrate': (tempData.last4WeeksQualityRate),
+                    'oeePercentage': (tempData.last4WeeksOee)
+                },
+                {
+                    'week': 'YTD',
+                    'availabilty': (tempData.yearAvailability),
+                    'performance': (tempData.yearPerformance),
+                    'qualityrate': (tempData.yearQualityRate),
+                    'oeePercentage': (tempData.yearOee)
+                }
+            ];
         }
 
     }
