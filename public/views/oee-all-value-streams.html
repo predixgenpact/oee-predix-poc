@@ -1,12 +1,12 @@
 <!-- Filter Content -->
 <div class="row vs-filter" data-ng-style="oeeAllValueStreamsObj.filter.style">
     <div class="col s12 m12 l12">
-        <div class="col s3 m4 l5">
+        <!--<div class="col s3 m4 l5">
             <select  disabled class="right vs-filter-sort-by" data-ng-model="oeeAllValueStreamsObj.filter.selectedOptions" data-ng-change="update()" data-ng-options="item for item in oeeAllValueStreamsObj.filter.sortByOptions">
                 <option style="display:none" value="">Sort By</option>
             </select>
-        </div>
-        <div class="col s9 m8 l7 view-options" style="padding: 12px;">
+        </div>-->
+        <div class="col s12 m12 l12 view-options" style="padding: 12px; text-align: center; ">
             <span>
                 <input type="checkbox" name="sortby" 
                     data-ng-model="oeeAllValueStreamsObj.filter.viewOptionConstrain[0]['isChecked']" 
@@ -34,7 +34,7 @@
     <a href="javascript:void(0)" data-ng-click="toogleFilter()">
         <i class="fa fa-filter" data-ng-hide="oeeAllValueStreamsObj.filter.show" aria-hidden="true"></i>
         <i class="fa fa-times-circle" data-ng-show="oeeAllValueStreamsObj.filter.show" aria-hidden="true"></i> &nbsp;
-        <span data-ng-bind="oeeDashboardObj.filter.show ? 'Close' : 'Filters'"></span>
+        <span data-ng-bind="oeeAllValueStreamsObj.filter.show ? 'Close' : 'Filters'"></span>
     </a>
 </div>
 

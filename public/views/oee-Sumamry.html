@@ -2,32 +2,28 @@
 <script type="text/javascript" src="js/materialize.min.js"></script>
 <!-- Filter Content -->
 <div class="row vs-filter" data-ng-style="oeeSummary.filter.style">
-    <div class="col s12 m12 l12">
-    <div class="col l2">
-    </div>
-        <div class="col s12 m4 l3">
+        <div class="col s12 m3 l3 hide-on-small-only"></div>
+        <div class="col s12 m2 l2">
             <select class="right vs-filter-sort-by" data-ng-model="oeeSummary.filter.selectedSiteCode" data-ng-change="update()" data-ng-options="item for item in oeeSummary.filter.SiteCodeOptions" style="border: 1px solid;background-color:lightgrey;border-radius: 5px">
                 <option style="display:none;background-color: white" value="">Site Code</option>
             </select>
         </div>
-        <div class="col s12 m4 l3" style="margin-left: -10%">
-            <select class="right vs-filter-sort-by" data-ng-model="oeeSummary.filter.selectedMachineGroup" data-ng-change="update()" data-ng-options="item for item in oeeSummary.filter.MachineGroupOptions" style="border: 1px solid;background-color:lightgrey;border-radius: 5px">
+        <div class="col s12 m2 l2" style="margin-left: -10%">
+            <select class="vs-filter-sort-by" data-ng-model="oeeSummary.filter.selectedMachineGroup" data-ng-change="update()" data-ng-options="item for item in oeeSummary.filter.MachineGroupOptions" style="border: 1px solid;background-color:lightgrey;border-radius: 5px">
                 <option style="display:none;background-color: white" value="">Machine Group</option>
             </select>
         </div>
-        <div class="col s12 m3 l2" id="Btn" style="margin-left:1%;margin-top: 0.7%">
-            <button id="Applybtn" class="btn btn--primary" type="button" data-ng-disabled="oeeDashboardObj.disableResetFilterBtn" data-ng-click="applyFilter();" style="width:150px;height:35px">Apply</button>
+        <div class="col s12 m2 l2" id="Btn" style="margin-left:1%;margin-top: 0.7%">
+            <button id="Applybtn" class="left btn btn--primary" type="button" data-ng-disabled="oeeSummary.disableResetFilterBtn" data-ng-click="applyFilter();" style="width:150px;height:35px">Apply</button>
         </div>
-       <div class="col l2">
-    </div>
-    </div>
+        <div class="col s12 m3 l3 hide-on-small-only"></div>
 </div>
 <!-- Filter Icon -->
 <div class="row vs-filter-icon" data-ng-style="oeeSummary.filterIcon.style">
     <a href="javascript:void(0)" data-ng-click="toogleFilter()">
         <i class="fa fa-filter" data-ng-hide="oeeSummary.filter.show" aria-hidden="true"></i>
         <i class="fa fa-times-circle" data-ng-show="oeeSummary.filter.show" aria-hidden="true"></i> &nbsp;
-        <span data-ng-bind="oeeDashboardObj.filter.show ? 'Close' : 'Filters'"></span>
+        <span data-ng-bind="oeeSummary.filter.show ? 'Close' : 'Filters'"></span>
     </a>
 </div>
 

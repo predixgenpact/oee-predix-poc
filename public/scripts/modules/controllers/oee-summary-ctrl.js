@@ -10,6 +10,7 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
        angular.element("#ui-view").hide();
         $scope.oeeSummary = {
             filter: {
+                show: false,
                 style: {
                     height: '5px',
                     overflow: 'hidden',

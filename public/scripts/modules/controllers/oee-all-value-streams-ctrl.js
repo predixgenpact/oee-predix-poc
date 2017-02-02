@@ -12,6 +12,7 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
 
         $scope.oeeAllValueStreamsObj = {
             filter: {
+                show: false,
                 style: {
                     height: '5px',
                     overflow: 'hidden',
@@ -61,7 +62,7 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
         OeeSupplyChainService.getSupplyChainServiceData(childUrl)
             .then(function(response) {
                 $scope.tree_data = angular.copy(makeTableJson(response));
-               // console.log(JSON.stringify($scope.tree_data));
+                // console.log(JSON.stringify($scope.tree_data));
                 angular.element(".page-loading").addClass("hidden");
                 angular.element("#ui-view").show();
 
@@ -89,91 +90,154 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
                     'Actual': '-',
                     'Delinquency': '-'
                 };
+                var tempSiteMap = {
+                    'Availability': 0,
+                    'Performance': 0,
+                    'Quality Rate': 0,
+                    'OEE': 0,
+                    'count': 0
+                };
+
+                // site name
                 if (data.subTierSiteMap[i].length) {
                     temp.children = [];
                     for (var j = 0; j < data.subTierSiteMap[i].length; j++) {
-                        for (var k = 0; k < data.siteAndAssetNumberrMapList.length; k++) {
-                            var tempSiteId = Object.keys(data.siteAndAssetNumberrMapList[k])[0];
-                            if (tempSiteId === data.subTierSiteMap[i][j]['siteId']) {
-                                // site name
-                                temp.children.push({
-                                    'Value Streams': data.subTierSiteMap[i][j]['siteId'],
-                                    'Availability': 0,
-                                    'Performance': 0,
-                                    'Quality Rate': 0,
-                                    'OEE': 0,
-                                    'Target': '-',
-                                    'Actual': '-',
-                                    'Delinquency': '-'
-                                });
-                                var machine = {
-                                    'Availability': 0,
-                                    'Performance': 0,
-                                    'Quality Rate': 0,
-                                    'OEE': 0,
-                                    'Target': '-',
-                                    'Actual': '-',
-                                    'Delinquency': '-'
-                                }
-                                temp.children[temp.children.length - 1].children = [];
-                                for (var l = 0; l < data.siteAndAssetNumberrMapList[k][tempSiteId].length; l++) {
-                                    var tempMachineData = {
-                                        'Availability': (data.siteAndAssetNumberrMapList[k][tempSiteId][l]['availabilty'] * 100),
-                                        'Performance': (data.siteAndAssetNumberrMapList[k][tempSiteId][l]['performance'] * 100),
-                                        'Quality Rate': (data.siteAndAssetNumberrMapList[k][tempSiteId][l]['qualityrate'] * 100 ),
-                                        'OEE': (data.siteAndAssetNumberrMapList[k][tempSiteId][l]['oeePercentage'] * 100 )
-                                    };
-                                    // machine name
-                                    temp.children[temp.children.length - 1].children.push({
-                                        'Value Streams': 'Machine## ' + data.siteAndAssetNumberrMapList[k][tempSiteId][l]['assetNumberId'],
-                                        'Availability': tempMachineData['Availability'] > 100 ? 100 : tempMachineData['Availability'],
-                                        'Performance': tempMachineData['Performance'] > 100 ? 100 : tempMachineData['Performance'] ,
-                                        'Quality Rate': tempMachineData['Quality Rate'] > 100 ? 100 :tempMachineData['Quality Rate'] ,
-                                        'OEE': tempMachineData['OEE'] > 100 ? 100 : tempMachineData['OEE'] ,
-                                        'Target': data.siteAndAssetNumberrMapList[k][tempSiteId][l]['target'] ? data.siteAndAssetNumberrMapList[k][tempSiteId][l]['target'] : '-',
-                                        'Actual': data.siteAndAssetNumberrMapList[k][tempSiteId][l]['actual'] ? data.siteAndAssetNumberrMapList[k][tempSiteId][l]['actual'] : '-',
-                                        'Delinquency': data.siteAndAssetNumberrMapList[k][tempSiteId][l]['delinquency'] ? data.siteAndAssetNumberrMapList[k][tempSiteId][l]['delinquency'] : '-'
+                        temp.children.push({
+                            'Value Streams': data.subTierSiteMap[i][j]['siteId'],
+                            'Availability': 0,
+                            'Performance': 0,
+                            'Quality Rate': 0,
+                            'OEE': 0,
+                            'Target': '-',
+                            'Actual': '-',
+                            'Delinquency': '-'
+                        });
+                        var tempSiteName = {
+                            'Availability': 0,
+                            'Performance': 0,
+                            'Quality Rate': 0,
+                            'OEE': 0,
+                            'count': 0
+                        };
+
+                        temp.children[j]['children'] = [];
+                        // group by
+                        for (var k in data.siteAssetGrpMap) {
+                            if (data.subTierSiteMap[i][j]['siteId'] === k) {
+                                for (var l = 0; l < data.siteAssetGrpMap[k].length; l++) {
+                                    temp.children[j]['children'].push({
+                                        'Value Streams': 'Group### ' + data.siteAssetGrpMap[k][l]['assetGroupId'],
+                                        'Availability': 0,
+                                        'Performance': 0,
+                                        'Quality Rate': 0,
+                                        'OEE': 0,
+                                        'Target': '-',
+                                        'Actual': '-',
+                                        'Delinquency': '-'
                                     });
-                                    tempMachineData = temp.children[temp.children.length - 1].children.slice(-1)[0];
-                                    machine['Availability'] += tempMachineData['Availability'];
-                                    machine['Performance'] += tempMachineData['Performance'];
-                                    machine['Quality Rate'] += tempMachineData['Quality Rate'];
-                                    machine['OEE'] += tempMachineData['OEE'];
-                                    if (data.siteAndAssetNumberrMapList[k][tempSiteId][l]['partNumberList'].length) {
-                                        temp.children[temp.children.length - 1].children[temp.children[temp.children.length - 1].children.length - 1].children = [];
-                                        for (var m = 0; m < data.siteAndAssetNumberrMapList[k][tempSiteId][l]['partNumberList'].length; m++) {
-                                            // parts
-                                            temp.children[temp.children.length - 1].children[temp.children[temp.children.length - 1].children.length - 1].children.push({
-                                                'Value Streams': 'Part# ' + data.siteAndAssetNumberrMapList[k][tempSiteId][l]['partNumberList'][m]['partNumberId'],
-                                                'Availability': data.siteAndAssetNumberrMapList[k][tempSiteId][l]['partNumberList'][m]['availabilty'],
-                                                'Performance': data.siteAndAssetNumberrMapList[k][tempSiteId][l]['partNumberList'][m]['performance'],
-                                                'Quality Rate': data.siteAndAssetNumberrMapList[k][tempSiteId][l]['partNumberList'][m]['qualityrate'],
-                                                'OEE': data.siteAndAssetNumberrMapList[k][tempSiteId][l]['partNumberList'][m]['oeePercentage'],
-                                                'Target': data.siteAndAssetNumberrMapList[k][tempSiteId][l]['partNumberList'][m]['target'] ? data.siteAndAssetNumberrMapList[k][tempSiteId][l]['partNumberList'][m]['target'] : '-',
-                                                'Actual': data.siteAndAssetNumberrMapList[k][tempSiteId][l]['partNumberList'][m]['actual'] ? data.siteAndAssetNumberrMapList[k][tempSiteId][l]['partNumberList'][m]['actual'] : '-',
-                                                'Delinquency': data.siteAndAssetNumberrMapList[k][tempSiteId][l]['partNumberList'][m]['delinquency'] ? data.siteAndAssetNumberrMapList[k][tempSiteId][l]['partNumberList'][m]['delinquency'] : '-'
-                                            });
+                                    var tempGroupData = {
+                                        'Availability': 0,
+                                        'Performance': 0,
+                                        'Quality Rate': 0,
+                                        'OEE': 0,
+                                        'count': 0
+                                    };
+                                    // machine
+                                    for (var m in data.siteAndAssetNumberrMapList) {
+                                        if (data.subTierSiteMap[i][j]['siteId'] === m) {
+                                            temp.children[j]['children'][l]['children'] = [];
+                                            var machineDataTotal = {
+                                                'Availability': 0,
+                                                'Performance': 0,
+                                                'Quality Rate': 0,
+                                                'OEE': 0,
+                                                'count': 0
+                                            };
+                                            for (var n = 0; n < data.siteAndAssetNumberrMapList[m].length; n++) {
+                                                //serach for group id in machine data
+                                                if (data.siteAssetGrpMap[k][l]['assetGroupId'] === data.siteAndAssetNumberrMapList[m][n]['assetGroupId']) {
+                                                    var machineData = data.siteAndAssetNumberrMapList[m][n];
+                                                    temp.children[j]['children'][l]['children'].push({
+                                                        'Value Streams': 'Machine## ' + machineData['assetNumberId'],
+                                                        'Availability': machineData['availabilty'],
+                                                        'Performance': machineData['performance'],
+                                                        'Quality Rate': machineData['qualityrate'],
+                                                        'OEE': machineData['oeePercentage'],
+                                                        'Target': machineData['target'] || '-',
+                                                        'Actual': machineData['actual'] || '-',
+                                                        'Delinquency': machineData['delinquency'] || '-'
+                                                    });
+                                                    var tempMachine = temp.children[j]['children'][l]['children'][temp.children[j]['children'][l]['children'].length - 1];
+                                                    tempMachine['children'] = [];
+                                                    // part no
+                                                    for (var o = 0; o < data.siteAndAssetNumberrMapList[m][n]['partNumberList'].length; o++) {
+                                                        var partNo = data.siteAndAssetNumberrMapList[m][n]['partNumberList'][o];
+                                                        tempMachine['children'].push({
+                                                            'Value Streams': 'Part# ' + partNo['partNumberId'],
+                                                            'Availability': partNo['availabilty'] || '-',
+                                                            'Performance': partNo['performance'] || '-',
+                                                            'Quality Rate': partNo['qualityrate'] || '-',
+                                                            'OEE': partNo['oeePercentage'] || '-',
+                                                            'Target': partNo['target'] || 'XX',
+                                                            'Actual': partNo['actual'] || 'XX',
+                                                            'Delinquency': partNo['delinquency'] || 'XX'
+                                                        });
+                                                    }
+
+                                                    machineDataTotal['Availability'] += Number(tempMachine['Availability']);
+                                                    machineDataTotal['Performance'] += Number(tempMachine['Performance']);
+                                                    machineDataTotal['Quality Rate'] += Number(tempMachine['Quality Rate']);
+                                                    machineDataTotal['OEE'] += Number(tempMachine['OEE']);
+                                                    machineDataTotal.count++;
+                                                }
+                                            }
+                                            temp.children[j]['children'][l]['Availability'] = Math.round((machineDataTotal['Availability'] / machineDataTotal.count) * 100) / 100;
+                                            temp.children[j]['children'][l]['Performance'] = Math.round((machineDataTotal['Performance'] / machineDataTotal.count) * 100) / 100;
+                                            temp.children[j]['children'][l]['Quality Rate'] = Math.round((machineDataTotal['Quality Rate'] / machineDataTotal.count) * 100) / 100;
+                                            temp.children[j]['children'][l]['OEE'] = Math.round((machineDataTotal['OEE'] / machineDataTotal.count) * 100) / 100;
+
+                                            tempGroupData['Availability'] += Number(temp.children[j]['children'][l]['Availability']);
+                                            tempGroupData['Performance'] += Number(temp.children[j]['children'][l]['Performance']);
+                                            tempGroupData['Quality Rate'] += Number(temp.children[j]['children'][l]['Quality Rate']);
+                                            tempGroupData['OEE'] += Number(temp.children[j]['children'][l]['OEE']);
+                                            tempGroupData.count++;
                                         }
                                     }
+
+                                    temp.children[j]['children'][l]['Availability'] = Math.round((tempGroupData['Availability'] / tempGroupData.count) * 100) / 100;
+                                    temp.children[j]['children'][l]['Performance'] = Math.round((tempGroupData['Performance'] / tempGroupData.count) * 100) / 100;
+                                    temp.children[j]['children'][l]['Quality Rate'] = Math.round((tempGroupData['Quality Rate'] / tempGroupData.count) * 100) / 100;
+                                    temp.children[j]['children'][l]['OEE'] = Math.round((tempGroupData['OEE'] / tempGroupData.count) * 100) / 100;
+                                    tempSiteName['Availability'] += Number(temp.children[j]['children'][l]['Availability']);
+                                    tempSiteName['Performance'] += Number(temp.children[j]['children'][l]['Performance']);
+                                    tempSiteName['Quality Rate'] += Number(temp.children[j]['children'][l]['Quality Rate']);
+                                    tempSiteName['OEE'] += Number(temp.children[j]['children'][l]['OEE']);
+                                    tempSiteName.count++;
                                 }
-                                machine['Availability'] = machine['Availability']/data.siteAndAssetNumberrMapList[k][tempSiteId].length;
-                                machine['Performance'] = machine['Performance']/data.siteAndAssetNumberrMapList[k][tempSiteId].length;
-                                machine['Quality Rate'] = machine['Quality Rate']/data.siteAndAssetNumberrMapList[k][tempSiteId].length;
-                                machine['OEE'] = machine['OEE']/data.siteAndAssetNumberrMapList[k][tempSiteId].length;
-                                temp.children[temp.children.length - 1]['Availability'] = machine['Availability'];
-                                temp.children[temp.children.length - 1]['Performance'] = machine['Performance'];
-                                temp.children[temp.children.length - 1]['Quality Rate'] = machine['Quality Rate'];
-                                temp.children[temp.children.length - 1]['OEE'] = machine['OEE'];
                             }
                         }
+
+                        temp.children[j]['Availability'] = Math.round((tempSiteName['Availability'] / tempSiteName.count) * 100) / 100;
+                        temp.children[j]['Performance'] = Math.round((tempSiteName['Performance'] / tempSiteName.count) * 100) / 100;
+                        temp.children[j]['Quality Rate'] = Math.round((tempSiteName['Quality Rate'] / tempSiteName.count) * 100) / 100;
+                        temp.children[j]['OEE'] = Math.round((tempSiteName['OEE'] / tempSiteName.count) * 100) / 100;
+
+                        tempSiteMap['Availability'] += Number(temp.children[j]['Availability']);
+                        tempSiteMap['Performance'] += Number(temp.children[j]['Performance']);
+                        tempSiteMap['Quality Rate'] += Number(temp.children[j]['Quality Rate']);
+                        tempSiteMap['OEE'] += Number(temp.children[j]['OEE']);
+                        tempSiteMap.count++;
                     }
-                    temp['Availability'] = temp.children[0]['Availability'];
-                    temp['Performance'] = temp.children[0]['Performance'];
-                    temp['Quality Rate'] = temp.children[0]['Quality Rate'];
-                    temp['OEE'] = temp.children[0]['OEE'];
+                }
+                if (tempSiteMap.count) {
+                    temp['Availability'] = Math.round((tempSiteMap['Availability'] / tempSiteMap.count) * 100) / 100;
+                    temp['Performance'] = Math.round((tempSiteMap['Performance'] / tempSiteMap.count) * 100) / 100;
+                    temp['Quality Rate'] = Math.round((tempSiteMap['Quality Rate'] / tempSiteMap.count) * 100) / 100;
+                    temp['OEE'] = Math.round((tempSiteMap['OEE'] / tempSiteMap.count) * 100) / 100;
                 }
                 tempJson.push(temp);
             }
+            //console.log(tempJson);
             return tempJson;
         }
 
@@ -231,14 +295,14 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
         }
 
         // enable apply & reset button
-        $scope.toogleResetButton = function (item) {
+        $scope.toogleResetButton = function(item) {
             $scope.oeeAllValueStreamsObj.filter.applyButton = false;
             $scope.oeeAllValueStreamsObj.filter.resetButton = false;
         }
-        
+
         // show hide column
         function update(item) {
-            if( item[0].isChecked ){
+            if (item[0].isChecked) {
                 angular.element('.vs-table tr:first-child th:nth-child(2)').show();
                 angular.element('.vs-table tr td:nth-child(2), .vs-table tr:last-child th:nth-child(2)').show();
                 angular.element('.vs-table tr td:nth-child(3), .vs-table tr:last-child th:nth-child(3)').show();
@@ -252,7 +316,7 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
                 angular.element('.vs-table tr td:nth-child(5), .vs-table tr:last-child th:nth-child(5)').hide();
             }
 
-            if( item[1].isChecked) {
+            if (item[1].isChecked) {
                 angular.element('.vs-table tr:first-child th:nth-child(3)').show();
                 angular.element('.vs-table tr td:nth-child(6), .vs-table tr:last-child th:nth-child(6)').show();
                 angular.element('.vs-table tr td:nth-child(7), .vs-table tr:last-child th:nth-child(7)').show();
@@ -265,7 +329,7 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
             }
         }
 
-        function sortOrder () {
+        function sortOrder() {
 
         }
 
@@ -274,7 +338,7 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
         }
 
         // set table row color
-         function setRowColor (branch) {
+        function setRowColor(branch) {
             angular.element('.level-1').filter(':even').addClass("even-row-color");
             angular.element('.level-1').filter(':odd').addClass('odd-row-color');
         }

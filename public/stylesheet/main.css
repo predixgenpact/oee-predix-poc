@@ -321,6 +321,9 @@ footer ul li span {
 .vs-table .table>tbody tr.level-4 td{
     font-size: 13px !important; 
 }
+.vs-table .table>tbody tr.level-5 td{
+    font-size: 13px !important; 
+}
 
 
 .view-options [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
@@ -343,6 +346,9 @@ footer ul li span {
 }
 .level-4>td:first-child{
     padding-left: 4rem !important; 
+}
+.level-5>td:first-child{
+    padding-left: 5rem !important; 
 }
 .vs-filter-sort-by {
     display: block;
