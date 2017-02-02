@@ -1,8 +1,9 @@
+
 <!-- Dashboard Filter -->
 <!-- Filter Content -->
 <div class="row filter" data-ng-style="oeeDashboardObj.filter.style">
     <div data-ng-style="oeeDashboardObj.filterContent.style" id="filterContent">
-         <!-- <div class="col s12 m3 l3">
+         <div class="col s12 m3 l3">
             <px-dropdown display-value="Select Status" checkbox-mode="true">
                 <px-dropdown-content id="test" checkbox-mode extend-dropdown='true' extend-dropdown-by='25' max-cont-character-width='15' items='[{"key":"key1","val":"AcceptableOEE","checked":true},{"key":"key2","val":"AtRisk","checked":true},{"key":"key3","val":"Constrained","checked":true}]'>
                 </px-dropdown-content>
@@ -15,7 +16,7 @@
             </px-dropdown>
         </div>
         <div class="col s12 m3 l3" id="Site">
-            <px-dropdown display-value="Select Site Code" checkbox-mode="true">
+            <px-dropdown display-value="Select Value Stream" checkbox-mode="true">
                 <px-dropdown-content id="test1" checkbox-mode extend-dropdown='true' extend-dropdown-by='25' max-cont-character-width='10' items='[{"key":"key1","val":"AUB","checked":true},{"key":"key2","val":"BAT","checked":true},{"key":"key3","val":"EVD","checked":true},{"key":"key4","val":"GNV","checked":true},{"key":"key5","val":"HOK","checked":true},{"key":"key6","val":"LYN","checked":true},{"key":"key7","val":"MAD","checked":true},{"key":"key8","val":"RUT","checked":true},{"key":"key9","val":"WIL","checked":true},{"key":"key10","val":"WJF","checked":true}]'>
                 </px-dropdown-content>
             </px-dropdown>
@@ -23,7 +24,7 @@
         <div class="col s12 m3 l3" id="Btn">
             <button id="Applybtn" class="btn btn--primary" type="button" data-ng-disabled="oeeDashboardObj.disableResetFilterBtn" data-ng-click="applyFilter();">Apply</button>
             <button id="Resetbtn" class="btn btn--default" type="button" data-ng-disabled="oeeDashboardObj.disableResetFilterBtn" data-ng-click="resetFilter()">Reset</button>
-        </div> -->
+        </div>
     </div>
 </div>
 <!-- / Filter Content -->
@@ -66,6 +67,15 @@
                     </tr>
                 </tbody>
             </table>
+            <table>
+            <tbody>
+                <tr>
+                <td><i class="large material-icons Tiny" style="font-size: 20px;color:blue">info</i></td>
+                <td><p class="grey-text" style="font-size:0.8rem;color:black !important;font-style: normal">Click on the Clusters to view at the Site Level.</p></td>
+                </tr>
+            </tbody>
+            </table>
+            
         </div>
     </div>
     <!-- / Info Card -->

@@ -504,3 +504,10 @@ footer ul li span {
 .summary-table tbody tr:nth-child(even) {
     background-color: #F8F9F9;
 }
+
+.card-header{
+    border-bottom:1px solid lightgrey !important;
+}
+.bottom-card{
+    margin-bottom: 5%;
+}

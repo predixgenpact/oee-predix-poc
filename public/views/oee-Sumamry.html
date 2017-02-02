@@ -2,21 +2,25 @@
 <script type="text/javascript" src="js/materialize.min.js"></script>
 <!-- Filter Content -->
 <div class="row vs-filter" data-ng-style="oeeSummary.filter.style">
-        <div class="col s12 m3 l3 hide-on-small-only"></div>
-        <div class="col s12 m2 l2">
+    <div class="col s12 m12 l12">
+        <div class="col l2">
+        </div>
+        <div class="col s12 m4 l3">
             <select class="right vs-filter-sort-by" data-ng-model="oeeSummary.filter.selectedSiteCode" data-ng-change="update()" data-ng-options="item for item in oeeSummary.filter.SiteCodeOptions" style="border: 1px solid;background-color:lightgrey;border-radius: 5px">
                 <option style="display:none;background-color: white" value="">Site Code</option>
             </select>
         </div>
-        <div class="col s12 m2 l2" style="margin-left: -10%">
-            <select class="vs-filter-sort-by" data-ng-model="oeeSummary.filter.selectedMachineGroup" data-ng-change="update()" data-ng-options="item for item in oeeSummary.filter.MachineGroupOptions" style="border: 1px solid;background-color:lightgrey;border-radius: 5px">
+        <div class="col s12 m4 l3" style="margin-left: -10%">
+            <select class="right vs-filter-sort-by" data-ng-model="oeeSummary.filter.selectedMachineGroup" data-ng-change="update1()" data-ng-options="item for item in oeeSummary.filter.MachineGroupOptions" style="border: 1px solid;background-color:lightgrey;border-radius: 5px">
                 <option style="display:none;background-color: white" value="">Machine Group</option>
             </select>
         </div>
-        <div class="col s12 m2 l2" id="Btn" style="margin-left:1%;margin-top: 0.7%">
-            <button id="Applybtn" class="left btn btn--primary" type="button" data-ng-disabled="oeeSummary.disableResetFilterBtn" data-ng-click="applyFilter();" style="width:150px;height:35px">Apply</button>
+        <div class="col s12 m3 l2" id="Btn" style="margin-left:1%;margin-top: 0.7%">
+            <button id="Applybtn" class="btn btn--primary" type="button" data-ng-click="applyFilter();" style="width:150px;height:35px" disabled="true">Apply</button>
         </div>
-        <div class="col s12 m3 l3 hide-on-small-only"></div>
+        <div class="col l2">
+        </div>
+    </div>
 </div>
 <!-- Filter Icon -->
 <div class="row vs-filter-icon" data-ng-style="oeeSummary.filterIcon.style">
@@ -29,8 +33,8 @@
 
 <!--- OEE Summary Table -->
 <div class="row oee-summary-table">
-    <div class="col s12 m12 l12">   
-        <table class="summary-table"> 
+    <div class="col s12 m12 l12">
+        <table class="summary-table">
             <thead>
                 <tr>
                     <th></th>
@@ -69,61 +73,77 @@
     </div>
 </div>
 
-
-
-<!-- Collapsible Cards -->
- <div class="row">
-     <div class="col s12 m12 l12">
-         <ul class="collapsible popout" data-collapsible="accordion">
-            <li>
-                <div class="collapsible-header active">OEE by Fiscal Week</div>
-                <div class="collapsible-body" ><div id="container"></div></div>
-            </li>
-            <li>
-                <div class="collapsible-header">Availability by Fiscal Week</div>
-                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-            </li>
-            <li>
-                <div class="collapsible-header">Performance by Fiscal Week</div>
-                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-            </li>
-            <li>
-                <div class="collapsible-header">Quality Rate by Fiscal Week</div>
-                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-            </li>
-            <li>
-                <div class="collapsible-header">Machine Downtime</div>
-                <div class="collapsible-body">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Fiscal Week</th>
-                                <th>Asset Number</th>
-                                <th>Down Time</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr data-ng-repeat="rowData in dataforpage.machineDownTimeList">
-                                <td>{{rowData.fiscalWeek}}</td>
-                                <td>{{rowData.assetNum}}</td>
-                                <td>{{rowData.downTime}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+<!-- Cards -->
+<div class="row">
+    <div class="col s12 m12 l12">
+        <div class="col s12 m6 l6">
+            <div class="card">
+                <div class="card-content">
+                    <div class="row card-header">
+                        <div class="col l6 m6 s6">
+                            <div class="card-title activator grey-text text-darken-4 ">OEE by Fiscal Week</div>
+                        </div>
+                        <div class="col l2 m2 s2">
+                            <div class="pull-right input-field " style="margin-top:-14%">
+                                <input id="WeekStart" value="0" type="number" class="validate" ng-model="StartWeek" ng-click="ChangedStartWeek()">
+                                <label for="WeekStart">Start Week</label>
+                            </div>
+                        </div>
+                        <div class="col l2 m2 s2">
+                            <div class="pull-right input-field " style="margin-top:-14%">
+                                <input id="WeekEnd" value="52" type="number" class="validate" ng-model="EndWeek" ng-change="ChangedEndWeek()">
+                                <label for="WeekEnd">End Week</label>
+                            </div>
+                        </div>
+                        <div class="col l2 m2 s2">
+                            <button id="ApplyWeekbtn" class="btn btn--primary" type="button" data-ng-click="applyWeek();" disabled="true" style="width:75px;height:30px;margin-left: 15%">Go</button>
+                        </div>
+                    </div>
+                    <div class="card-image waves-effect waves-block waves-light" id="container">
+                    </div>
                 </div>
-            </li>
-        </ul>
-     </div>
- </div>
+            </div>
+        </div>
 
+        <div class="col s12 m6 l6">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4 card-header" style="padding-bottom: 6%">Availability by Fiscal Week</span>
+                </div>
+                <div class="card-image waves-effect waves-block waves-light" id="container1">
+                </div>
+            </div>
+        </div>
 
+        <div class="col s12 m6 l6">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4 card-header">Performance by Fiscal Week</span>
+                </div>
+                <div class="card-image waves-effect waves-block waves-light" id="container2">
+                </div>
+            </div>
+        </div>
 
+        <div class="col s12 m6 l6 bottom-card">
+            <div class="card">
+
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4 card-header">Quality Rate by Fiscal Week</span>
+                </div>
+                <div class="card-image waves-effect waves-block waves-light" id="container3">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
 <!-- Back and Next Button -->
-<a ui-sref="valueStreams" class="back-btn btn--primary">
+<a ui-sref="valueStreams" class="back-btn btn--primary" style="left:1rem;bottom:3rem">
     <i class="fa fa-angle-double-left" aria-hidden="true"></i>
     <span>OEE All Value Stream</span>
 </a>
-<a ui-sref="dashboard" class="next-btn btn--primary">
+<a ui-sref="dashboard" class="next-btn btn--primary" style="right:1rem;bottom:3rem">
     <span>Supply Chain</span>
     <i class="fa fa-angle-double-right" aria-hidden="true"></i>
 </a>
