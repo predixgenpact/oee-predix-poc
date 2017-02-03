@@ -63,6 +63,7 @@ footer ul li span {
     position: fixed;
     bottom: 20px;
     right: 20px;
+    z-index: 999; 
     background: rgb(0, 0, 0);
     background: rgba(0, 0, 0, 0.7);
     width: 50px;
@@ -212,7 +213,7 @@ footer ul li span {
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
 }
 
-.vs-filter {
+.vs-filter, .os-filter {
     margin-bottom: 0px !important;
     position: fixed;
     width: 100%;
@@ -227,7 +228,7 @@ footer ul li span {
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
 }
 
-.vs-filter-icon {
+.vs-filter-icon, .os-filter-icon {
     margin-bottom: 0px !important;
     position: fixed;
     width: 100%;
@@ -241,7 +242,7 @@ footer ul li span {
     transition-timing-function: ease;
     -webkit-transition-timing-function: ease;
 }
-.vs-filter-icon a {
+.vs-filter-icon a, .os-filter-icon a {
     padding: 8px 19px !important;
     background-color: #fff !important;
     color: #000 !important;
@@ -250,7 +251,7 @@ footer ul li span {
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
 }
 .value-stream-table {
-    margin-top: 80px;
+    /*margin-top: 80px;*/
     padding: 10px 15px;
 }
 .vs-table {
@@ -436,7 +437,7 @@ footer ul li span {
     background-color: pink !important;
 }
 
-.back-btn {
+/*.back-btn {
     font-size: 16px !important;
     position: fixed;
     left: 4rem;
@@ -458,7 +459,7 @@ footer ul li span {
     font-size: 14px;
     z-index: 25;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
-}
+}*/
 .collapsible-body{
     background-color:#F8F8F8;
 }
@@ -475,11 +476,15 @@ footer ul li span {
 }
 
 .oee-summary-table {
-    margin-top: 90px;
+    /*margin-top: 90px;*/
     margin-left: 1rem !important;
     margin-right: 1rem !important;
     margin-bottom: 0 !important;  
 }
+.oee-summary-table>div {
+    overflow: auto;
+}
+
 .oee-summary-table table.summary-table thead tr{
     background-color: #4C81C2 !important;
     color: white;
@@ -511,3 +516,73 @@ footer ul li span {
 .bottom-card{
     margin-bottom: 5%;
 }
+
+.nav--bar>div{
+    margin-bottom: 0 !important;
+    padding: 0 !important; 
+}
+.nav--bar .card-content {
+  padding: 25px 0px !important;
+}
+
+.back-btn {
+    font-size: 16px;
+    font-weight: 600;
+    text-align: left;
+    margin-top: -12px !important;
+}
+
+.next-btn {
+    font-size: 16px;
+    font-weight: 600;
+    text-align: right;
+    margin-top: -12px !important;
+}
+
+.back-btn a, .next-btn a {
+    padding: 1.1rem 1rem; 
+}
+.back-btn a:hover, .next-btn a:hover {
+    background-color: #edf6f7;
+}
+.parts-claimed-table {
+    max-height: 400px;
+    overflow: auto;
+}
+
+.machine-downtime-table {
+    max-height: 400px;
+    overflow: auto;
+}
+
+.os-sort-filter {
+    padding: 10px !important;
+}
+.os-sort-filter>select{
+    width: 100%;
+    display: inherit;
+    height: 2rem !important;
+}
+#endWeek, #startWeek {
+    margin-bottom: 1px !important;
+    height: 2rem !important;
+}
+.oee-filter-apply-btn {
+        margin: 0.8rem !important;
+}
+/*
+
+@media screen and (max-width: 600px) and (min-width: 320px) {
+    .os-filter {
+        height: 200px !important;
+    }
+    .os-filter-icon {
+        top: 247px !important;
+    }
+}*/
+
+.parts-claimed-table table.summary-table thead tr,
+.machine-downtime-table table.summary-table thead tr {
+    background-color: #4C81C2 !important;
+    color: white;
+} 

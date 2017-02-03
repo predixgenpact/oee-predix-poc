@@ -22,7 +22,7 @@
 
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
     <script src="js/materialize.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
 
@@ -44,11 +44,13 @@
     <header class="fixed-header">
         <ul>
             <li>
-                <span href="#home" style="padding: 0px;">
-                        <img src="./images/GE-logo.png" alt="Not Found">
+                <a ui-sref="dashboard">
+                    <span href="#home" style="padding: 0px;">
+                            <img src="./images/GE-logo.png" alt="Not Found">
                     </span>
+                </a>
             </li>
-            <li><span style="font-size: 18px;">Overall Equipment Effectiveness</span></li>
+            <li><a ui-sref="dashboard"><span style="font-size: 18px;">Overall Equipment Effectiveness</span></a></li>
             <li class="right hide-on-med-and-down"><span style="font-size: 14px; padding:13px;">Powered by Predix</span></li>
         </ul>
     </header>

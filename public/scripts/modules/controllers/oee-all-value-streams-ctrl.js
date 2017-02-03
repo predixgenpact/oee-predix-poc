@@ -279,6 +279,7 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
             $scope.oeeAllValueStreamsObj.filter.applyButton = true;
             $scope.oeeAllValueStreamsObj.filter.resetButton = true;
             update($scope.oeeAllValueStreamsObj.filter.viewOptionConstrain);
+            $scope.toogleFilter();
         }
 
         $scope.resetFilter = function() {
@@ -292,6 +293,7 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
             update($scope.oeeAllValueStreamsObj.filter.viewOptionConstrain);
             $scope.oeeAllValueStreamsObj.filter.applyButton = true;
             $scope.oeeAllValueStreamsObj.filter.resetButton = true;
+            $scope.toogleFilter();
         }
 
         // enable apply & reset button
