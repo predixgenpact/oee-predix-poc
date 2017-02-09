@@ -4,10 +4,10 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
     // Controller definition
     angular.module('app.module')
         .controller('OeeDashboardCtrl', OeeDashboardCtrl);
-    OeeDashboardCtrl.$inject = ['$scope', '$timeout', '$window', 'OeeSupplyChainService'];
+    OeeDashboardCtrl.$inject = ['$scope', '$timeout', '$window', 'OeeSupplyChainService','$http'];
 
 
-    function OeeDashboardCtrl($scope, $timeout, $window, OeeSupplyChainService) {
+    function OeeDashboardCtrl($scope, $timeout, $window, OeeSupplyChainService,$http) {
         angular.element(".page-loading").addClass("hidden");
 
         $scope.oeeDashboardObj = {
@@ -44,6 +44,12 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
         }
 
 
+        //Enable and Disable Apply and Reset Button
+        $(document).on("click", "#Option", function(){
+            document.getElementById("Applybtn").disabled = false;
+            document.getElementById("Resetbtn").disabled = false;
+        }); 
+
         $scope.temp = [];
         $scope.temp1 = [];
         $scope.temp2 = [];
@@ -66,7 +72,16 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
                         $scope.oeeDashboardObj.filterIcon.style = {
                             top: '210px'
                         };
-                    } else {
+                    } else if($scope.width > 650 && $scope.width < 800) {
+                        $scope.oeeDashboardObj.filter.style = {
+                            height: '100px',
+                            overflow: 'hidden'
+                        };
+                        $scope.oeeDashboardObj.filterIcon.style = {
+                            top: '145px'
+                        };
+                    }
+                     else {
                         $scope.oeeDashboardObj.filter.style = {
                             height: '65px',
                             overflow: 'hidden'
@@ -106,7 +121,16 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
                     $scope.oeeDashboardObj.filterIcon.style = {
                         top: '210px'
                     };
-                } else {
+                } else if($scope.width > 650 && $scope.width < 800) {
+                        $scope.oeeDashboardObj.filter.style = {
+                            height: '100px',
+                            overflow: 'hidden'
+                        };
+                        $scope.oeeDashboardObj.filterIcon.style = {
+                            top: '145px'
+                        };
+                    }
+                    else {
                     $scope.oeeDashboardObj.filter.style = {
                         height: '65px',
                         overflow: 'hidden'
@@ -149,140 +173,237 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
                 console.log('Failed to fetch data');
             });
 
+            //Filters
+            $scope.searchSelectAllModel = []; 
+            $scope.searchSelectAllData = [ 
+              {id: "AcceptableOEE",label:"AcceptableOEE"},
+              {id: "AtRisk",label:"AtRisk"},
+              {id: "Constrained",label:"Constrained"}
+            ];
+            $scope.searchSelectAllSettings = {
+              enableSearch: true,
+              showSelectAll: true,
+              keyboardControls: true
+            };
+            $scope.example5customTexts = {buttonDefaultText: 'Select Status'};
+            $scope.example6model=[ 
+              {id: "AcceptableOEE",label:"AcceptableOEE"},
+              {id: "AtRisk",label:"AtRisk"},
+              {id: "Constrained",label:"Constrained"}
+            ];
+
+            //Second Filter
+            $scope.searchSelectAllModel1 = []; 
+            $scope.searchSelectAllData1 = [ 
+              {id: "Australia", label: "Australia"},
+              {id: "Brazil", label: "Brazil"},
+              {id: "Canada", label: "Canada"},
+              {id: "China", label: "China"},
+              {id: "CzechRepublic", label: "CzechRepublic"},
+              {id: "France", label: "France"},
+              {id: "Germany", label: "Germany"},
+              {id: "Hungary", label: "Hungary"},
+              {id: "Italy", label: "Italy"},
+              {id: "Korea", label: "Korea"},
+              {id: "Malaysia", label: "Malaysia"},
+              {id: "Mexico", label: "Mexico"},
+              {id: "Poland", label: "Poland"},
+              {id: "Qatar", label: "Qatar"},
+              {id: "Romania", label: "Romania"},
+              {id: "Singapore", label: "Singapore"},
+              {id: "Turkey", label: "Turkey"},
+              {id: "United Arab Emirates", label: "UAE"},
+              {id: "United Kingdom", label: "UK"},
+              {id: "United States", label: "USA"}
+            ];
+            $scope.searchSelectAllSettings1 = {
+              enableSearch: true,
+              showSelectAll: true,
+              keyboardControls: true
+            };
+            $scope.example5customTexts1 = {buttonDefaultText: 'Select Country'};
+            $scope.example6model1=[ 
+              {id: "Australia", label: "Australia"},
+              {id: "Brazil", label: "Brazil"},
+              {id: "Canada", label: "Canada"},
+              {id: "China", label: "China"},
+              {id: "CzechRepublic", label: "CzechRepublic"},
+              {id: "France", label: "France"},
+              {id: "Germany", label: "Germany"},
+              {id: "Hungary", label: "Hungary"},
+              {id: "Italy", label: "Italy"},
+              {id: "Korea", label: "Korea"},
+              {id: "Malaysia", label: "Malaysia"},
+              {id: "Mexico", label: "Mexico"},
+              {id: "Poland", label: "Poland"},
+              {id: "Qatar", label: "Qatar"},
+              {id: "Romania", label: "Romania"},
+              {id: "Singapore", label: "Singapore"},
+              {id: "Turkey", label: "Turkey"},
+              {id: "United Arab Emirates", label: "UAE"},
+              {id: "United Kingdom", label: "UK"},
+              {id: "United States", label: "USA"}
+            ];
+
+            //Third Filter
+            $scope.searchSelectAllModel2 = []; 
+            $scope.searchSelectAllData2 = [ 
+              {id: "Rotating", label: "Rotating"},
+              {id: "Turbine", label: "Turbine"}
+            ];
+            $scope.searchSelectAllSettings2 = {
+              enableSearch: true,
+              showSelectAll: true,
+              keyboardControls: true
+            };
+            $scope.example5customTexts2 = {buttonDefaultText: 'Select Value Stream'};
+            $scope.example6model3=[ 
+              {id: "Rotating", label: "Rotating"},
+              {id: "Turbine", label: "Turbine"}
+            ];
 
         // Apply Filter
           $scope.applyFilter = function() {
-              document.getElementById("Applybtn").disabled = true;
-              $scope.coordstoplot = $scope.coords;
-              if ($scope.temp.length != 0) {
-                  $scope.coordstoplotafterfilter = [];
-                  angular.forEach($scope.temp, function(value, key) {
-                      if (value.checked != false) {
-                          angular.forEach($scope.coordstoplot, function(value1, key1) {
-                              if (value.val == value1.oee_status) {
-                                  $scope.coordstoplotafterfilter.push(value1);
-                              }
-                          })
-                      }
-                  })
-                  $scope.coordstoplot = $scope.coordstoplotafterfilter;
-                  angular.forEach($scope.temp, function(value, key) {
-                      if ($scope.temp[0].checked == false) {
-                          document.getElementById("Acceptable").style.display = "none";
 
-                      } else {
-                          document.getElementById("Acceptable").style.display = "block";
-                      }
-                      if ($scope.temp[1].checked == false) {
-                          document.getElementById("Risk").style.display = "none";
-                      } else {
-                          document.getElementById("Risk").style.display = "block";
-                      }
-                      if ($scope.temp[2].checked == false) {
-                          document.getElementById("Constrained").style.display = "none";
-                      } else {
-                          document.getElementById("Constrained").style.display = "block";
-                      }
+            $scope.statusinbody="";
+            $scope.countryinbody="";
+            $scope.valueStreamsinbody="";
 
-                  })
+            document.getElementById("AcceptableOEE").style.display = "block";
+            document.getElementById("AtRisk").style.display = "block";
+            document.getElementById("Constrained").style.display = "block";
+            document.getElementById("Applybtn").disabled = true;
+
+            var hasAcceptable=true;
+            var hasAtRisk=true;
+            var hasConstrained=true;
+
+
+            //Dynamic Legend for Map
+            for (var index = 0; index < $scope.example6model.length; ++index) {
+              var statusinarray = $scope.example6model[index];
+              if(statusinarray.id == "AcceptableOEE"){
+               hasAcceptable = true;
+               break;
               }
-              if ($scope.temp1.length != 0) {
-                  $scope.coordstoplotafterfilter = [];
-                  angular.forEach($scope.temp1, function(value, key) {
-                      if (value.checked != false) {
-                          angular.forEach($scope.coordstoplot, function(value1, key1) {
-                              if (value.val == value1.sitecode) {
-                                  $scope.coordstoplotafterfilter.push(value1);
-                              }
-                          })
-                      }
-                  })
-                  $scope.coordstoplot = $scope.coordstoplotafterfilter;
+              else{
+                hasAcceptable = false;
               }
-              if ($scope.temp2.length != 0) {
-                  $scope.coordstoplotafterfilter = [];
-                  angular.forEach($scope.temp2, function(value, key) {
-                      if (value.checked != false) {
-                          angular.forEach($scope.coordstoplot, function(value1, key1) {
-                              if (value.val == value1.country) {
-                                  $scope.coordstoplotafterfilter.push(value1);
-                              }
-                          })
-                      }
-                  })
-                  $scope.coordstoplot = $scope.coordstoplotafterfilter;
               }
-              $scope.func($scope.coordstoplotafterfilter);
+
+              for (var index = 0; index < $scope.example6model.length; ++index) {
+              var statusinarray = $scope.example6model[index];
+              if(statusinarray.id == "AtRisk"){
+               hasAtRisk = true;
+               break;
+              }
+              else{
+                hasAtRisk = false;
+              }
+              }
+              for (var index = 0; index < $scope.example6model.length; ++index) {
+              var statusinarray = $scope.example6model[index];
+              if(statusinarray.id == "Constrained"){
+               hasConstrained = true;
+               break;
+              }
+              else{
+                hasConstrained = false;
+              }
+              }
+
+              if(hasAcceptable!=true){
+                document.getElementById("AcceptableOEE").style.display="none";
+              }
+
+              if(hasAtRisk!=true){
+                document.getElementById("AtRisk").style.display="none";
+              }
+
+              if(hasConstrained!=true){
+                document.getElementById("Constrained").style.display="none";
+              }
+
+
+              //Fetching the Filtered Data            
+              function joinObj(a, attr) {
+              var out = []; 
+              for (var i=0; i<a.length; i++) {  
+              out.push(a[i][attr]); 
+              } 
+              return out.join(",");
+              }
+
+            $scope.statusinbody=joinObj($scope.example6model,'id');;  
+            $scope.countryinbody=joinObj($scope.example6model1,'id');
+            $scope.valueStreamsinbody=joinObj($scope.example6model3,'id');
+                  var body = {
+                  "status" :$scope.statusinbody,
+
+                  "country" : $scope.countryinbody,
+
+                  "valueStreams" :$scope.valueStreamsinbody
+                  };
+
+                  $http.post("https://overallequipmenteffectiveness-supplychain.run.aws-usw02-pr.ice.predix.io/oee/SiteGeographyDetailsByFilters", body, {
+                  headers: {
+                  "Content-Type": "application/json"
+                  },
+                  transformResponse : function(data){
+                  return data;
+                  }
+                  })
+                  .success(function(data, status, headers, config) {
+                  $scope.coordstoplotafterfilter=JSON.parse(data);
+                    $scope.func($scope.coordstoplotafterfilter);
+                  })
+            
               $scope.toogleFilter();
           }
 
         // reset all filter selection
         $scope.resetFilter = function() {
-            document.getElementById("Applybtn").disabled = true;
             document.getElementById("Resetbtn").disabled = true;
-            document.getElementById("Acceptable").style.display = "block";
-            document.getElementById("Risk").style.display = "block";
+            document.getElementById("Applybtn").disabled = true;
+            document.getElementById("AcceptableOEE").style.display = "block";
+            document.getElementById("AtRisk").style.display = "block";
             document.getElementById("Constrained").style.display = "block";
+             $scope.example6model3=[ 
+              {id: "Rotating", label: "Rotating"},
+              {id: "Turbine", label: "Turbine"}
+            ];
 
-            if ($scope.temp.length != 0) {
-                for (var i = 0; i < $scope.temp.length; i++) {
-                    if ($scope.temp[i].checked == false) {
-                        $scope.temp[i].checked = true;
-                        document.getElementById('test').items[i].checked = true;
-                    }
-                }
-            }
-            if ($scope.temp1.length != 0) {
-                for (var i = 0; i < $scope.temp1.length; i++) {
-                    if ($scope.temp1[i].checked == false) {
-                        $scope.temp1[i].checked = true;
-                    }
-                }
-            }
-            if ($scope.temp2.length != 0) {
-                for (var i = 0; i < $scope.temp2.length; i++) {
-                    if ($scope.temp2[i].checked == false) {
-                        $scope.temp2[i].checked = true;
-                    }
-                }
-            }
+             $scope.example6model1=[ 
+              {id: "Australia", label: "Australia"},
+              {id: "Brazil", label: "Brazil"},
+              {id: "Canada", label: "Canada"},
+              {id: "China", label: "China"},
+              {id: "CzechRepublic", label: "CzechRepublic"},
+              {id: "France", label: "France"},
+              {id: "Germany", label: "Germany"},
+              {id: "Hungary", label: "Hungary"},
+              {id: "Italy", label: "Italy"},
+              {id: "Korea", label: "Korea"},
+              {id: "Malaysia", label: "Malaysia"},
+              {id: "Mexico", label: "Mexico"},
+              {id: "Poland", label: "Poland"},
+              {id: "Qatar", label: "Qatar"},
+              {id: "Romania", label: "Romania"},
+              {id: "Singapore", label: "Singapore"},
+              {id: "Turkey", label: "Turkey"},
+              {id: "United Arab Emirates", label: "UAE"},
+              {id: "United Kingdom", label: "UK"},
+              {id: "United States", label: "USA"}
+            ];
+
+            $scope.example6model=[ 
+              {id: "AcceptableOEE",label:"AcceptableOEE"},
+              {id: "AtRisk",label:"AtRisk"},
+              {id: "Constrained",label:"Constrained"}
+            ];
             $scope.func($scope.coords);
             $scope.toogleFilter();
         }
-
-
-        //Event Listener for Px-Dropdown
-           document.addEventListener('px-dropdown-click', function(evt) {
-
-               //Making the buttons Able
-               document.getElementById("Applybtn").disabled = false;
-               document.getElementById("Resetbtn").disabled = false;
-               $("#Applybtn").addClass("mdl-button--colored");
-               $("#Resetbtn").addClass("mdl-button--colored");
-
-               //On Selection of Status
-               $("#test").click(function(event) {
-                   window.setTimeout(function() {
-                       $scope.temp = document.getElementById('test').items;
-                   }, 1000);
-               });
-
-               //On Selection of Site Code
-               $("#test1").click(function(event) {
-                   window.setTimeout(function() {
-                       $scope.temp1 = document.getElementById('test1').items;
-                   })
-               });
-
-               //On Selection of Country
-               $("#test2").click(function(event) {
-                   window.setTimeout(function() {
-                       $scope.temp2 = document.getElementById('test2').items;
-                   })
-               });
-
-           });
-
 
         //Plotting the Map
         $scope.func = function(val) {
@@ -382,9 +503,9 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
                     maxZoom: 15
                 };
 
-                var markerCluster = new MarkerClusterer(map, markers, /*mcOptions*/ {
+                /*var markerCluster = new MarkerClusterer(map, markers,  {
                     imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
-                });
+                });*/
             }, 8000);
         }
 

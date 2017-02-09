@@ -17,27 +17,25 @@
 
     <!-- Requires Webcomponents.js polyfill is provided by the page for browsers that don't support html imports -->
     <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+
     <script src="js/materialize.js"></script>
+
     <script type="text/javascript" src="js/materialize.min.js"></script>
 
-    <link rel="import" href="polymer-loader.html">
     <link rel="import" href="polymer-loader.vulcanized.html">
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
     <link rel="stylesheet" href="./stylesheet/main.css">
     <!--Import Google Icon Font-->
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css" media="screen,projection" />
 
     <!--<link type="text/css" rel="stylesheet" href="bower_components/angular-bootstrap-grid-tree/src/treeGrid.css">-->
-    <!--<link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">-->
+<!--     <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"> -->
 </head>
 
 <body unresolved data-ng-controller="MainCtrl">
@@ -68,7 +66,9 @@
     <span return-to-top></span>
     <google-analytics code="UA-72329845-1"></google-analytics>
     <!-- Google Maps -->
-    <script async defer src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCtBI6mtWdJNgy7p4ZXz9Mbzkawtnrh1Qc&language=en"></script>
+    <!-- <script async defer src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCtBI6mtWdJNgy7p4ZXz9Mbzkawtnrh1Qc&language=en"></script> -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtBI6mtWdJNgy7p4ZXz9Mbzkawtnrh1Qc&language=en"></script>
+
 </body>
 <script>
     // IE11 workaround: We can't rely on IE's load order for scripts that are loaded outside of require.js (might
@@ -92,5 +92,8 @@
         s.parentNode.insertBefore(ga, s);
     })();
 </script>
+
+    <script type="text/javascript" src="js/angularjs-dropdown-multiselect.js"</script>
+
 
 </html>

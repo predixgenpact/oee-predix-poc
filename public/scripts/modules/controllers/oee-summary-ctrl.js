@@ -1,4 +1,4 @@
-define(['angular', '../app-module', '../services/oee-supply-chain-service'], function(angular) {
+define(['angular', '../app-module', '../services/oee-supply-chain-service', 'highcharts'], function(angular) {
     'use strict';
 
     // Controller definition
@@ -11,7 +11,7 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
 
 
         $scope.oeeSummary = {
-            filter: {                
+            filter: {
                 style: {
                     height: '5px',
                     overflow: 'hidden',
@@ -19,7 +19,7 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
                 applyButton: true,
                 resetButton: true,
                 show: false,
-                selectedSiteCode: sessionStorage.getItem("SelectedSiteCode") ? sessionStorage.getItem("SelectedSiteCode") : 'GNV',
+                selectedSiteCode: sessionStorage.getItem("SelectedSiteCode")|| 'GNV',
                 SiteCodeOptions: ['GNV', 'AUB', 'WIL'],
                 MachineGroupOptions: ['GENx EDM - OP50', 'Group_2', 'Group_1', 'Group_4', 'GE90 Grind', 'Group_6', 'Group_3', 'M96 Grind', 'M91 Grind', 'Group_5', 'au-magerle002', 'Group_1'],
                 selectedMachineGroup: 'au-magerle002',
@@ -29,7 +29,8 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
                 }, {
                     name: 'Throughput',
                     isChecked: true
-                }]
+                }],
+                applyBtn: true
             },
             filterIcon: {
                 style: {
@@ -46,21 +47,16 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
                 },
                 showOeeCol: true,
                 showThroughputCol: true
-            }
+            },
+            filterDropdown: false
         }
+        $scope.machineDataSort = false;
+
         $scope.oeeSummary.filter.MachineGroupOptions = $scope.oeeSummary.filter.selectedSiteCode == 'GNV' ? ['GENx EDM - OP50', 'Group_2', 'Group_1', 'Group_4', 'GE90 Grind', 'Group_6', 'Group_3', 'M96 Grind', 'M91 Grind', 'Group_5'] : $scope.oeeSummary.filter.selectedSiteCode == 'AUB' ? ['au-magerle002'] : $scope.oeeSummary.filter.selectedSiteCode == 'WIL' ? ['Group_1'] : ['GENx EDM - OP50', 'Group_2', 'Group_1', 'Group_4', 'GE90 Grind', 'Group_6', 'Group_3', 'M96 Grind', 'M91 Grind', 'Group_5', 'au-magerle002', 'Group_1'];
         $scope.oeeSummary.filter.selectedMachineGroup = $scope.oeeSummary.filter.MachineGroupOptions[0];
         $scope.dataforpage;
         $scope.StartWeek = 1;
         $scope.EndWeek = 52;
-
-        $scope.ChangedStartWeek = function() {
-            document.getElementById("ApplyWeekbtn").disabled = false;
-        }
-
-        $scope.ChangedEndWeek = function() {
-            document.getElementById("ApplyWeekbtn").disabled = false;
-        }
 
         //Changing Week
         $scope.applyWeek = function() {
@@ -73,33 +69,45 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
 
         //For Dependent dropdowns
         $scope.update = function() {
-            document.getElementById("Applybtn").disabled = false;
-            $scope.oeeSummary.filter.MachineGroupOptions = $scope.oeeSummary.filter.selectedSiteCode == 'GNV' ? ['GENx EDM - OP50', 'Group_2', 'Group_1', 'Group_4', 'GE90 Grind', 'Group_6', 'Group_3', 'M96 Grind', 'M91 Grind', 'Group_5'] : $scope.oeeSummary.filter.selectedSiteCode == 'AUB' ? ['au-magerle002'] : $scope.oeeSummary.filter.selectedSiteCode == 'WIL' ? ['Group_1'] : ['GENx EDM - OP50', 'Group_2', 'Group_1', 'Group_4', 'GE90 Grind', 'Group_6', 'Group_3', 'M96 Grind', 'M91 Grind', 'Group_5', 'au-magerle002', 'Group_1'];
+            var gnvData = ['GENx EDM - OP50', 'Group_2', 'Group_1', 'Group_4', 'GE90 Grind', 'Group_6', 'Group_3', 'M96 Grind', 'M91 Grind', 'Group_5'];
+            var aubData = ['au-magerle002'];
+            var wilData = ['Group_1'];
+            $scope.oeeSummary.filter.MachineGroupOptions = $scope.oeeSummary.filter.selectedSiteCode === 'GNV' ? gnvData : ($scope.oeeSummary.filter.selectedSiteCode === 'AUB' ? aubData : ($scope.oeeSummary.filter.selectedSiteCode == 'WIL' ? ['Group_1'] : ['GENx EDM - OP50', 'Group_2', 'Group_1', 'Group_4', 'GE90 Grind', 'Group_6', 'Group_3', 'M96 Grind', 'M91 Grind', 'Group_5', 'au-magerle002', 'Group_1']));
             $scope.oeeSummary.filter.selectedMachineGroup = $scope.oeeSummary.filter.MachineGroupOptions[0];
+            $scope.oeeSummary.filter.applyBtn = false;
+            $scope.oeeSummary.filterDropdown = true;
         }
 
+        $scope.changedWeek = function() {
+            $scope.oeeSummary.filter.applyBtn = false;
+        }
         //For Dependent dropdowns
         $scope.update1 = function() {
-            document.getElementById("Applybtn").disabled = false;
+            $scope.oeeSummary.filter.applyBtn = false;
+            $scope.oeeSummary.filterDropdown = true;
         }
 
+        $scope.showhideInterval = '';
         // show/hide filter
         $scope.toogleFilter = function() {
             $scope.oeeSummary.filter.show = !$scope.oeeSummary.filter.show;
             $scope.oeeSummary.table.showThroughputCol = !$scope.oeeSummary.table.showThroughputCol;
             $scope.oeeSummary.table.showOeeCol = !$scope.oeeSummary.table.showOeeCol;
+            //clear prvious interval
+            $timeout.cancel($scope.showhideInterval);
+
             if ($scope.oeeSummary.filter.show) {
                 $scope.oeeSummary.filter.style = {
-                    height: '55px',
+                    height: ($window.innerWidth > 320 && $window.innerWidth < 601) ? '200px' : '55px',
                     overflow: 'hidden'
                 };
                 $scope.oeeSummary.filterIcon.style = {
-                    top: '100px',
+                    top: ($window.innerWidth > 320 && $window.innerWidth < 601) ? '247px' : '100px',
                     left: '50px',
                     right: '50px',
                     width: '80%'
                 };
-                $timeout(function() {
+                $scope.showhideInterval = $timeout(function() {
                     $scope.oeeSummary.filter.style.overflow = 'inherit';
                 }, 600);
             } else {
@@ -115,6 +123,7 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
                 };
             }
         }
+
         Highcharts.setOptions({
             global: {
                 useUTC: false
@@ -130,9 +139,14 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
 
         //Function to run on Apply Filter Call
         $scope.applyFilter = function() {
-            document.getElementById("Applybtn").disabled = true;
-            $scope.getdata();
+            $scope.oeeSummary.filter.applyBtn = true;
+            if ($scope.oeeSummary.filterDropdown) {
+                $scope.getdata();
+            }
+            $scope.applyWeek();
             $scope.toogleFilter();
+            oeeSummaryTable();
+            $scope.oeeSummary.filterDropdown = false;
         }
 
 
@@ -235,7 +249,6 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
         }
 
         //Plot Availability by Fiscal Week
-
         $scope.plotAvailabilitybyFiscalWeek = function(val) {
             var datatoplotchart = [];
             angular.forEach(val, function(value, key) {
@@ -509,5 +522,24 @@ define(['angular', '../app-module', '../services/oee-supply-chain-service'], fun
             ];
         }
 
+        // $scope.machineDataSort = function () {
+        //     $scope.machineDataReverse = !$scope.machineDataReverse;
+        // }
+
+        // setting filter height on screen resize
+        angular.element($window).bind('resize', function() {
+            $scope.oeeSummary.filter.show = false;
+            $scope.oeeSummary.filter.style = {
+                height: '5px',
+                overflow: 'hidden'
+            };
+            $scope.oeeSummary.filterIcon.style = {
+                top: '50px',
+                left: '50px',
+                right: '50px',
+                width: '80%'
+            };
+            $scope.$apply();
+        });
     }
 });

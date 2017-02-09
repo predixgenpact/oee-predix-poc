@@ -3,27 +3,28 @@
 <!-- Filter Content -->
 <div class="row filter" data-ng-style="oeeDashboardObj.filter.style">
     <div data-ng-style="oeeDashboardObj.filterContent.style" id="filterContent">
-         <div class="col s12 m3 l3">
-            <px-dropdown display-value="Select Status" checkbox-mode="true">
-                <px-dropdown-content id="test" checkbox-mode extend-dropdown='true' extend-dropdown-by='25' max-cont-character-width='15' items='[{"key":"key1","val":"AcceptableOEE","checked":true},{"key":"key2","val":"AtRisk","checked":true},{"key":"key3","val":"Constrained","checked":true}]'>
-                </px-dropdown-content>
-            </px-dropdown>
+    <div class="col s12 m2 l1" style="margin-top: 0.5%">
+    <label id="customlabel">Status</label>
+    </div>
+         <div class="col s12 m4 l2">
+            <div ng-dropdown-multiselect="" class="multiselectdropdown" checkboxes="true" selected-model="example6model" options="searchSelectAllData" selected-model="searchSelectAllModel" extra-settings="searchSelectAllSettings" translation-texts="example5customTexts"></div>
         </div>
-        <div class="col s12 m3 l3" id="Country">
-            <px-dropdown display-value="Select Country" checkbox-mode="true">
-                <px-dropdown-content id="test2" checkbox-mode extend-dropdown='true' extend-dropdown-by='25' max-cont-character-width='10' items='[{"key":"key1","val":"Australia","checked":true},{"key":"key2","val":"Brazil","checked":true},{"key":"key3","val":"Canada","checked":true},{"key":"key4","val":"China","checked":true},{"key":"key5","val":"CzechRepublic","checked":true},{"key":"key6","val":"France","checked":true},{"key":"key7","val":"Germany","checked":true},{"key":"key8","val":"Hungary","checked":true},{"key":"key9","val":"Italy","checked":true},{"key":"key10","val":"Korea","checked":true},{"key":"key11","val":"Malaysia","checked":true},{"key":"key12","val":"Mexico","checked":true},{"key":"key13","val":"Poland","checked":true},{"key":"key14","val":"Qatar","checked":true},{"key":"key15","val":"Romania","checked":true},{"key":"key16","val":"Singapore","checked":true},{"key":"key17","val":"Turkey","checked":true},{"key":"key18","val":"UAE","checked":true},{"key":"key19","val":"UK","checked":true},{"key":"key20","val":"USA","checked":true}]'>
-                </px-dropdown-content>
-            </px-dropdown>
+        <div class="col s12 m2 l1" style="margin-top: 0.5%">
+    <label id="customlabel">Country</label>
+    </div>
+        <div class="col s12 m4 l2" id="Country">
+            <div ng-dropdown-multiselect="" class="multiselectdropdown" checkboxes="true" selected-model="example6model1" options="searchSelectAllData1" selected-model="searchSelectAllModel1" extra-settings="searchSelectAllSettings1" translation-texts="example5customTexts1"></div>
         </div>
-        <div class="col s12 m3 l3" id="Site">
-            <px-dropdown display-value="Select Value Stream" checkbox-mode="true">
-                <px-dropdown-content id="test1" checkbox-mode extend-dropdown='true' extend-dropdown-by='25' max-cont-character-width='10' items='[{"key":"key1","val":"AUB","checked":true},{"key":"key2","val":"BAT","checked":true},{"key":"key3","val":"EVD","checked":true},{"key":"key4","val":"GNV","checked":true},{"key":"key5","val":"HOK","checked":true},{"key":"key6","val":"LYN","checked":true},{"key":"key7","val":"MAD","checked":true},{"key":"key8","val":"RUT","checked":true},{"key":"key9","val":"WIL","checked":true},{"key":"key10","val":"WJF","checked":true}]'>
-                </px-dropdown-content>
-            </px-dropdown>
+
+        <div id="SecondRowofFilterValueStream" class="col s12 m2 l1" style="min-width:10% ;margin-top: 0.5%">
+    <label id="customlabel">Value Stream</label>
+    </div>
+        <div id="SecondRowofFilter" class="col s12 m4 l2" id="Site">
+           <div ng-dropdown-multiselect="" class="multiselectdropdown" checkboxes="true" selected-model="example6model3" options="searchSelectAllData2" selected-model="searchSelectAllModel2" extra-settings="searchSelectAllSettings2" translation-texts="example5customTexts2"></div>
         </div>
-        <div class="col s12 m3 l3" id="Btn">
-            <button id="Applybtn" class="btn btn--primary" type="button" data-ng-disabled="oeeDashboardObj.disableResetFilterBtn" data-ng-click="applyFilter();">Apply</button>
-            <button id="Resetbtn" class="btn btn--default" type="button" data-ng-disabled="oeeDashboardObj.disableResetFilterBtn" data-ng-click="resetFilter()">Reset</button>
+        <div class="col s12 m3 l3 SecondRowofFilterBtn" id="Btn" style="min-width: 20% !important;max-width: 20%">
+            <button id="Applybtn" class="btn btn--primary" type="button"  data-ng-click="applyFilter();" disabled>Apply</button>
+            <button id="Resetbtn" class="btn btn--default" type="button"  data-ng-click="resetFilter()" disabled>Reset</button>
         </div>
     </div>
 </div>
@@ -53,11 +54,11 @@
         <div class="card-content" style="padding:0px !important;font-size: 0.8rem">
             <table style="margin-left: 10%">
                 <tbody>
-                    <tr id="Acceptable">
+                    <tr id="AcceptableOEE">
                         <td style="padding:0px !important;width: 25px !important"><img src="../images/location-green.png"></td>
                         <td style="padding:0px !important">Acceptable OEE</td>
                     </tr>
-                    <tr id="Risk">
+                    <tr id="AtRisk">
                         <td style="padding:0px !important;width: 25px !important;width: 25px !important"><img src="../images/AtRisk.png"></td>
                         <td style="padding:0px !important">At Risk</td>
                     </tr>
@@ -67,15 +68,14 @@
                     </tr>
                 </tbody>
             </table>
-            <table>
+            <!-- <table>
             <tbody>
                 <tr>
                 <td><i class="large material-icons Tiny" style="font-size: 20px;color:blue">info</i></td>
                 <td><p class="grey-text" style="font-size:0.8rem;color:black !important;font-style: normal">Click on the Clusters to view at the Site Level.</p></td>
                 </tr>
             </tbody>
-            </table>
-            
+            </table> -->            
         </div>
     </div>
     <!-- / Info Card -->
@@ -84,7 +84,19 @@
     <div class="col s12 m12 l12" id="googleMap" data-ng-style="oeeDashboardObj.googleMaps.style" map-lazy-load="https://maps.google.com/maps/api/js"></div>
     <!-- / Google Maps -->
     <!-- Value Stream Button -->
+    <!--  <div class="fixed-action-btn horizontal" style="bottom:10%;right:4%">
+    <a class="btn-floating btn-large red">
+      <i class="large material-icons">reorder</i>
+    </a>
+    <ul>
+      <li><a class="btn-floating red" href="/valueStreams">Value Streams</a></li>
+      <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+      <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+      <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+    </ul>
+  </div> -->
     <a href="/valueStreams" class="value-stream-btn btn--primary">See Value Stream Data</a>
     <!-- / Value Stream Button-->
 </div>
 <!-- / Dashboard Content -->
+

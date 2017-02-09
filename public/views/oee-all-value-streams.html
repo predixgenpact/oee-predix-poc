@@ -38,6 +38,28 @@
     </a>
 </div>
 
+<!-- Nav bar (Back & Next) -->
+<div class="row nav--bar">
+    <div class="col s12 m12 l12">
+        <div class="card">
+            <div class="card-content">
+                <div class="col s6 m6 l6 back-btn">
+                    <a ui-sref="dashboard">
+                        <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                        <span>OEE Supply Chain</span>
+                    </a>
+                </div>
+                <div class="col s6 m6 l6 next-btn">
+                    <a ui-sref="oeeSummary">
+                        <span>OEE Summary</span>
+                        <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Table-->
 <div class="row value-stream-table">
     <tree-grid tree-data="tree_data" class="vs-table" on-select="tableHandler(branch)" on-click="setRowColor(branch)" icon-leaf="-" icon-expand="fa fa-chevron-right" icon-collapse="fa fa-chevron-down">
@@ -45,11 +67,11 @@
 </div>
 
 <!-- Back and Next Button -->
-<a ui-sref="dashboard" class="back-btn btn--primary">
+<!--<a ui-sref="dashboard" class="back-btn btn--primary">
     <i class="fa fa-angle-double-left" aria-hidden="true"></i>
     <span>OEE Supply Chain</span>
 </a>
 <a ui-sref="oeeSummary" class="next-btn btn--primary">
     <span>OEE Summary</span>
     <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-</a>
+</a>-->

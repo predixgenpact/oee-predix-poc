@@ -71,7 +71,8 @@ require.config({
         highcharts: '../bower_components/highcharts/highcharts',
         'materialize': '../bower_components/materialize/dist/js/materialize.min',
         'app-module': './modules/app-module',
-        'treeGrid': './modules/directives/tree-grid-directive'
+        'treeGrid': './modules/directives/tree-grid-directive',
+        'angularjs-dropdown-multiselect':'../js/angularjs-dropdown-multiselect'
     },
     priority: [
         'jquery',
@@ -106,7 +107,9 @@ require.config({
         },
         'treeGrid': {
             deps: ['angular']
+        },
+        'angularjs-dropdown-multiselect': {
+            deps: ['angular']
         }
-
     }
 });

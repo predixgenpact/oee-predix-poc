@@ -11,7 +11,9 @@ define([
     'px-datasource',
     'ng-bind-polymer',
     'angular-animate',
-    'treeGrid'
+    'treeGrid',
+    'angularjs-dropdown-multiselect'
+
 ], function ($, angular) {
     'use strict';
     /**
@@ -26,7 +28,8 @@ define([
         'predix.datasource',
         'px.ngBindPolymer',
         'ngAnimate',
-        'treeGrid'
+        'treeGrid',
+        'angularjs-dropdown-multiselect'
     ]);
 
     /**

@@ -63,6 +63,7 @@ footer ul li span {
     position: fixed;
     bottom: 20px;
     right: 20px;
+    z-index: 999; 
     background: rgb(0, 0, 0);
     background: rgba(0, 0, 0, 0.7);
     width: 50px;
@@ -212,7 +213,7 @@ footer ul li span {
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
 }
 
-.vs-filter {
+.vs-filter, .os-filter {
     margin-bottom: 0px !important;
     position: fixed;
     width: 100%;
@@ -227,7 +228,7 @@ footer ul li span {
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
 }
 
-.vs-filter-icon {
+.vs-filter-icon, .os-filter-icon {
     margin-bottom: 0px !important;
     position: fixed;
     width: 100%;
@@ -241,7 +242,7 @@ footer ul li span {
     transition-timing-function: ease;
     -webkit-transition-timing-function: ease;
 }
-.vs-filter-icon a {
+.vs-filter-icon a, .os-filter-icon a {
     padding: 8px 19px !important;
     background-color: #fff !important;
     color: #000 !important;
@@ -250,7 +251,7 @@ footer ul li span {
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
 }
 .value-stream-table {
-    margin-top: 80px;
+    /*margin-top: 80px;*/
     padding: 10px 15px;
 }
 .vs-table {
@@ -376,44 +377,15 @@ footer ul li span {
     font-size: 18px !important;
 }
 #filterContent{
-    margin: 15px 240px;
-    height: 35px;
-    display: none;
-}
-
-/*For Ipad*/
-@media screen and (min-device-width:700px) and (max-device-width: 1050px){
-#filterContent{
     margin: 15px;
     height: 35px;
     display: none;
 }
-}
 
-/*For Iphone*/
-@media screen and (max-device-width:650px){
-#filterContent{
-    margin: 0px;
-    height: 35px;
-    display: none;
-    margin-top: 2%;
-}
-#Country{
-    margin-top: 2%;
-}
-#Site{
-    margin-top: 2%;
-}
-#Btn{
-    margin-top: 2%;
-}
-#Resetbtn{
-    float: right;
-    margin-right: 2%;   
-}
-#Applybtn{
-    float:right;
-}
+#customlabel{
+    font-size:1em !important;
+    color: black !important;
+    float: right !important;
 }
 
 #Table{
@@ -436,29 +408,6 @@ footer ul li span {
     background-color: pink !important;
 }
 
-.back-btn {
-    font-size: 16px !important;
-    position: fixed;
-    left: 4rem;
-    bottom: 5rem;
-    padding: 0.7rem 2rem;    
-    border-radius: 20px;
-    font-size: 14px;
-    z-index: 25;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
-}
-
-.next-btn {
-    font-size: 16px !important;
-    position: fixed;
-    right: 4rem;
-    bottom: 5rem;
-    padding: 0.7rem 2rem;    
-    border-radius: 20px;
-    font-size: 14px;
-    z-index: 25;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
-}
 .collapsible-body{
     background-color:#F8F8F8;
 }
@@ -475,11 +424,15 @@ footer ul li span {
 }
 
 .oee-summary-table {
-    margin-top: 90px;
+    /*margin-top: 90px;*/
     margin-left: 1rem !important;
     margin-right: 1rem !important;
     margin-bottom: 0 !important;  
 }
+.oee-summary-table>div {
+    overflow: auto;
+}
+
 .oee-summary-table table.summary-table thead tr{
     background-color: #4C81C2 !important;
     color: white;
@@ -510,4 +463,171 @@ footer ul li span {
 }
 .bottom-card{
     margin-bottom: 5%;
+}
+
+.nav--bar>div{
+    margin-bottom: 0 !important;
+    padding: 0 !important; 
+}
+.nav--bar .card-content {
+  padding: 25px 0px !important;
+}
+
+.back-btn {
+    font-size: 16px;
+    font-weight: 600;
+    text-align: left;
+    margin-top: -12px !important;
+}
+
+.next-btn {
+    font-size: 16px;
+    font-weight: 600;
+    text-align: right;
+    margin-top: -12px !important;
+}
+
+.back-btn a, .next-btn a {
+    padding: 1.1rem 1rem; 
+}
+.back-btn a:hover, .next-btn a:hover {
+    background-color: #edf6f7;
+}
+.parts-claimed-table {
+    max-height: 400px;
+    overflow: auto;
+}
+
+.machine-downtime-table {
+    max-height: 400px;
+    overflow: auto;
+}
+
+.os-sort-filter {
+    padding: 10px !important;
+}
+.os-sort-filter>select{
+    width: 100%;
+    display: inherit;
+    height: 2rem !important;
+}
+#endWeek, #startWeek {
+    margin-bottom: 1px !important;
+    height: 2rem !important;
+}
+.oee-filter-apply-btn {
+        margin: 0.8rem !important;
+}
+
+.parts-claimed-table table.summary-table thead tr,
+.machine-downtime-table table.summary-table thead tr {
+    background-color: #4C81C2 !important;
+    color: white;
+} 
+
+.multiselectdropdown button{
+    width:200px !important;
+    text-align:left !important;
+    background-color: white !important;
+}
+
+.multiselectdropdown button+ul{
+    background-color: white !important;
+    margin:0 !important;
+    margin-top: 0.5% !important;
+    border: 1px solid grey !important;
+    width:200px !important;
+    height: 200px !important;
+    border-radius: 8px !important;
+}
+
+.multiselectdropdown button+ul > .divider {
+    display: none !important;
+    }
+
+.multiselectdropdown button+ul > li > a {
+    color:black !important;
+    cursor:pointer !important;
+    margin:10px !important;
+}
+
+.multiselectdropdown button+ul > li >  .dropdown-header{
+    margin-right: 10px !important;
+    margin-bottom: 10px !important;
+    margin-left: 10px !important;
+}
+
+.multiselectdropdown button+ul > li >  .dropdown-header > .form-control{
+    margin:0px !important;
+}
+
+.multiselectdropdown button+ul > li {
+    height:30px !important;
+}
+
+.multiselectdropdown button+ul > li:nth-child(3) {
+    width: 45px !important;
+}
+
+.multiselectdropdown button+ul > li:nth-child(6) {
+    margin-top: : 10px !important;
+    padding-left: 10px !important;
+}
+
+.multiselectdropdown button+ul > li {
+    margin-top: : 10px !important;
+    padding-left: 10px !important;
+}
+
+.multiselectdropdown button+ul > li:first-child {
+    padding-top: 5px !important;
+
+}
+.multiselectdropdown button+ul > li:last-child {
+    padding-top: 5px !important;
+}
+
+.multiselectdropdown button+ul > li > a > div > label > span > span {
+    color: black !important;
+    font-size:1.25em !important;
+}
+
+#DropdownOnSummary{
+    border:1px solid #b1b1bc !important;
+    border-radius: 3px !important;
+}
+
+/*Added*/
+/*Filter Section for iPad Portrait Mode*/
+@media screen and (min-device-width:650px) and (max-device-width: 900px){
+    .dropdown-menu{
+        position: absolute !important;
+    }
+    #SecondRowofFilter{
+        margin-top: 2% !important;
+    }
+    .SecondRowofFilterBtn{
+        margin-top: 2% !important;
+        margin-left: 19% !important;
+        max-width: 30% !important;
+    }
+    #SecondRowofFilterValueStream{
+        margin-top: 2.5% !important;
+    }
+}
+
+/*Filter Section for iPad Landscape Mode*/
+@media screen and (min-device-width:900px) and (max-device-width: 1050px){
+    #DropdownButton{
+        width: 95% !important;
+    }
+    #SecondRowofFilterValueStream{
+        min-width: 11% !important;/
+    }
+    .multiselectdropdown button+ul{
+    width:95% !important;
+    }
+    .caret{
+        margin-left: 20% !important;
+    }
 }
